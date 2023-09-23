@@ -1,0 +1,6 @@
+inherited Form6_SSW3: TForm6_SSW3
+  ClientHeight = 183
+  ClientWidth = 183
+  Fill.Color = xFFFBFBFB
+  DesignerMasterStyle = 3
+end

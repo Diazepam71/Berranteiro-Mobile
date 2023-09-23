@@ -1,0 +1,50 @@
+inherited Form3_LgXhdpiPh: TForm3_LgXhdpiPh
+  ClientHeight = 425
+  ClientWidth = 720
+  Fill.Color = claBlack
+  Fill.Kind = Solid
+  DesignerMasterStyle = 3
+  inherited Button1: TButton
+    TabOrder = 11
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = esquerda
+    OnEnter = esquerda2
+  end
+  inherited Button2: TButton
+    TabOrder = 10
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = direita
+    OnEnter = direita2
+  end
+  inherited Button3: TButton
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = pular
+  end
+  inherited Button5: TButton
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = trocar_arma
+  end
+  inherited Button8: TButton
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = soltar_arma
+  end
+  inherited Button4: TButton
+    OnClick = nil
+  end
+  inherited Timer2: TTimer
+    OnTimer = nil
+  end
+  inherited Button6: TButton
+    Position.X = 623.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = atacar2
+    OnEnter = atacar
+  end
+  inherited Button7: TButton
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = recarregar
+  end
+  inherited Timer1: TTimer
+    OnTimer = loop
+  end
+end

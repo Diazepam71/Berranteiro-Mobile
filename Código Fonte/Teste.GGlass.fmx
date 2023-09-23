@@ -1,0 +1,21 @@
+inherited Form6_GGlass: TForm6_GGlass
+  ClientHeight = 215
+  ClientWidth = 427
+  Fill.Color = xFFFBFBFB
+  DesignerMasterStyle = 3
+  inherited Button1: TButton
+    Position.Y = 112.000000000000000000
+  end
+  inherited Button2: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 168.000000000000000000
+  end
+  inherited Button3: TButton
+    Position.X = 104.000000000000000000
+    Position.Y = 168.000000000000000000
+  end
+  inherited Timer1: TTimer
+    Interval = 50
+    OnTimer = loop
+  end
+end

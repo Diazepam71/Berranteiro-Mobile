@@ -1,0 +1,6 @@
+inherited Form6_Moto360: TForm6_Moto360
+  ClientHeight = 218
+  ClientWidth = 240
+  Fill.Color = xFFFBFBFB
+  DesignerMasterStyle = 3
+end

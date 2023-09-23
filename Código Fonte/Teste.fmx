@@ -1,0 +1,71 @@
+object Form6: TForm6
+  Left = 0
+  Top = 0
+  Caption = 'Form6'
+  ClientHeight = 480
+  ClientWidth = 640
+  Fill.Kind = Solid
+  Position = Default
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = fechar
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    Position.X = 168.000000000000000000
+    Position.Y = 176.000000000000000000
+    TabOrder = 1
+    Text = 'Button1'
+  end
+  object Brush1: TBrushObject
+    StyleName = 'Brush1'
+    Brush.Color = xFFF00000
+    Left = 8
+    Top = 72
+  end
+  object Image1: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Position.X = 176.000000000000000000
+    Position.Y = 48.000000000000000000
+  end
+  object ImageControl1: TImageControl
+    Position.X = 232.000000000000000000
+    Position.Y = 320.000000000000000000
+    TabOrder = 4
+  end
+  object BrushObject1: TBrushObject
+    StyleName = 'Brush1'
+    Brush.Color = xFFF00000
+    Left = 64
+    Top = 32
+  end
+  object Brush2: TBrushObject
+    StyleName = 'Brush2'
+    Left = 8
+    Top = 16
+  end
+  object Button2: TButton
+    Position.X = 272.000000000000000000
+    Position.Y = 184.000000000000000000
+    TabOrder = 8
+    Text = 'Button2'
+  end
+  object Button3: TButton
+    Position.X = 336.000000000000000000
+    Position.Y = 128.000000000000000000
+    TabOrder = 9
+    Text = 'Button3'
+  end
+  object Timer1: TTimer
+    Left = 320
+    Top = 56
+  end
+  object Button4: TButton
+    Position.X = 328.000000000000000000
+    Position.Y = 272.000000000000000000
+    TabOrder = 15
+    Text = 'Button4'
+  end
+end

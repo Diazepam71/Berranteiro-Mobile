@@ -1,0 +1,60 @@
+inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
+  ClientHeight = 425
+  ClientWidth = 720
+  Fill.Kind = Bitmap
+  FullScreen = True
+  DesignerMasterStyle = 3
+  inherited Button1: TButton
+    StyledSettings = []
+    Position.X = 96.000000000000000000
+    Position.Y = 160.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'speedbuttonstyle'
+    Text = 'Fase 1'
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 32.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+    OnClick = executarFase1
+    OnEnter = selecionarBotao
+    OnExit = desselecionarBotao
+  end
+  inherited Label1: TLabel
+    StyledSettings = []
+    Position.X = 208.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 441.000000000000000000
+    Size.Height = 55.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 48.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+    Text = 'BERRANTEIRO++'
+  end
+  inherited Label2: TLabel
+    Position.X = 239.000000000000000000
+    Position.Y = 152.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Carregando...'
+    Visible = False
+  end
+  inherited Button2: TButton
+    Position.X = 520.000000000000000000
+    Text = 'Fase 2'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = executarFase2
+    OnEnter = selecionarBotao
+  end
+  inherited Button3: TButton
+    Position.X = 96.000000000000000000
+    Position.Y = 264.000000000000000000
+    Text = 'Fase 3'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = executarFase3
+    OnEnter = selecionarBotao
+    OnExit = nil
+  end
+end

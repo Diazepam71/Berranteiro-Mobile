@@ -1,0 +1,49 @@
+inherited Form6_LgXhdpiPh: TForm6_LgXhdpiPh
+  BorderStyle = None
+  ClientHeight = 720
+  ClientWidth = 450
+  Fill.Color = xFFFBFBFB
+  FormFactor.Width = 2340
+  FormFactor.Height = 1080
+  FormFactor.Orientations = [Landscape]
+  OnKeyDown = teclaApertada
+  DesignerMasterStyle = 3
+  inherited Button1: TButton
+    Position.X = 128.000000000000000000
+    Position.Y = 184.000000000000000000
+    Size.Width = 193.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Come'#231'ar a Revolu'#231#227'o'
+    OnClick = revolucao
+  end
+  inherited Button2: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Esquerda'
+    OnClick = esquerda
+    OnEnter = moveEsq2
+  end
+  inherited Button3: TButton
+    Position.X = 176.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Direita'
+    OnClick = direita
+    OnEnter = moveDir2
+  end
+  inherited Timer1: TTimer
+    Interval = 17
+    OnTimer = loop
+  end
+  inherited Button4: TButton
+    Position.X = 304.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Pular'
+    OnEnter = pular
+  end
+end
