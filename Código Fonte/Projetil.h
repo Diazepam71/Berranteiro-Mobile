@@ -14,6 +14,7 @@ namespace Entidades
 			float alcance;
 			bool direita;
 			bool ativado;
+			float dano;
 			Inimigo *atirador;
 			clock_t relogio;
 
@@ -25,6 +26,8 @@ namespace Entidades
 			bool getAtivado();
 			void setDireita(bool b);
 			void setAtirador(Inimigo *i);
+			float getDano() {return dano; };
+            void setVidas(int n);
 	};
 
 }

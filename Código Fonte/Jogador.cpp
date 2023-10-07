@@ -1,7 +1,7 @@
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "Obstaculo.h"
-//#include <windows.h>
+#include "Projetil.h"
 #include <iostream>
 #include <cmath>
 #include <System.Ioutils.hpp>
@@ -163,7 +163,8 @@ void Jogador::colisaoInimigo(Entidade *i)
 		}
 		else if(i->getAtacar()==true)
 		{
-			numVidas -= static_cast <Inimigo*> (i)->getDano();
+			if (i->getProjetil() == true) numVidas -= static_cast <Projetil*> (i)->getDano();
+			else numVidas -= static_cast <Inimigo*> (i)->getDano();
 		}
 		verifTempo = false;
 	}
@@ -220,12 +221,12 @@ int Jogador::colisaoMapaObs(Entidade *hbx)
 		verifTempo = false;
 	}
 
-	if((clock() - tempoDano) / CLOCKS_PER_SEC >=3)
+	if((clock() - tempoDano) / CLOCKS_PER_SEC >=1.5)
 	{
 		verifTempo = true;
 		tempoDano = clock();
 	}
-
+	setVidas(numVidas);
 	return flag;
 }
 
@@ -314,7 +315,7 @@ void Jogador::atirar() {
 	static_cast <Entidade*> (e)->setVidas(static_cast <Entidade*> (e)->getVidas() - l_arma->getElX(arma_sel)->getInfo()->getDano());
 	if (static_cast <Entidade*> (e)->getVivo() == false) {
 		pontos += 50;
-		//std::cout << "+50 pts.\n";
+		//ShowMessage("Matou.");
 	}
 	//else std::cout << "Nao matou.\n";
 }

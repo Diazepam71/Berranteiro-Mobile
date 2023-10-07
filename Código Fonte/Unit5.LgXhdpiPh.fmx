@@ -1,0 +1,27 @@
+inherited Form5_LgXhdpiPh: TForm5_LgXhdpiPh
+  ClientHeight = 425
+  ClientWidth = 720
+  Fill.Color = claBlack
+  Fill.Kind = Solid
+  DesignerMasterStyle = 3
+  inherited FDConnection1: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Users\Ryzen\Documents\Embarcadero\Studio\Projects\Ap' +
+        'p Mobile\SQLite\Ranking.db'
+      'LockingMode=Normal'
+      'DriverID=SQLite')
+    Connected = True
+    LoginPrompt = False
+    Left = 152
+    Top = 80
+  end
+  inherited FDQuery1: TFDQuery
+    SQL.Strings = (
+      'CREATE TABLE IF NOT EXISTS "Ranking" ('
+      '"Nome" TEXT,'
+      '"Senha" TEXT,'
+      '"Pontos" INTEGER'
+      ');')
+  end
+end

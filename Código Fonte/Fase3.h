@@ -35,11 +35,14 @@ __published:	// IDE-managed Components
 	void __fastcall atacar2(TObject *Sender);
 	void __fastcall atacar(TObject *Sender);
 	void __fastcall loop(TObject *Sender);
+	void __fastcall teclaApertada(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+          TShiftState Shift);
 private:	// User declarations
 	ImpFase3* f1;
 public:		// User declarations
 	__fastcall TForm4(TComponent* Owner);
 	void rolagem();
+    ImpFase3* getF3() {return f1;};
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm4 *Form4;

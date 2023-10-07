@@ -10,10 +10,10 @@ class Item : public Entidade {
 protected:
 	Jogador* j;
 	string nome;
-	//TMediaPlayer* som;
 
 public:
-	Item(Jogador* jo, float x, float y, Fmx::Types::TFmxObject* parent, System::Classes::TComponent* owner);
+	Item(Jogador* jo, float x, float y, Fmx::Types::TFmxObject* parent,
+	System::Classes::TComponent* owner);
 	~Item();
 	virtual void pegar();
 	void move();

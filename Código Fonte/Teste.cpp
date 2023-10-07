@@ -24,11 +24,21 @@ __fastcall TForm6::TForm6(TComponent* Owner)
 	pColi = NULL;
 	o = NULL;
 	lista = new ListaEntes();
+    FDConnection1->Params->Values["Database"] =
+		System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath
+		(), L"Ranking.db");
+	FDConnection1->Params->Database = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath
+		(), L"Ranking.db");
 
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm6::revolucao(TObject *Sender)
 {
+	FDQuery1->Active = false;
+	FDQuery1->SQL->Clear();
+	FDQuery1->SQL->Text = "select Nome, Pontos from Ranking order by Pontos desc";
+	FDQuery1->Active = true;
+    Label1->Text = FDQuery1->FieldByName("Nome")->AsString;
 	Button1->Text = "Revolução iniciada.\n";
 	this->Fill->Assign(Brush1->Brush);
 	//Image1->Bitmap->LoadFromFile("J1Direita.png");
@@ -144,4 +154,16 @@ void __fastcall TForm6::pular(TObject *Sender)
     Button4->ResetFocus();
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForm6::inicializa(TObject *Sender)
+{
+	FDConnection1->Params->Values["Database"] =
+		System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath
+		(), L"Ranking.db");
+	FDConnection1->Params->Database = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath
+		(), L"Ranking.db");
+	ShowMessage("Arquivo Escolhido.");
+}
+//---------------------------------------------------------------------------
+
 

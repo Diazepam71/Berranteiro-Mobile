@@ -15,6 +15,7 @@ Ente(p, parent)
 	atacar = false;
 	obstaculo = false;
 	item = false;
+    projetil = false;
 	numVidas = v;
 }
 
@@ -51,17 +52,22 @@ void Entidade::operator--()
 }
 
 void Entidade::setVidas(int n) { 
-	numVidas = n;
-	if (numVidas <= 0) {
+
+	if (n <= 0 && numVidas > 0) {
+		comp = corpo->Width;
+		alt = corpo->Height;
 		setVivo(false);
 		corpo->Width = 0;
 		corpo->Height = 0;
 	}
-	else {
+	else if (n > 0 && numVidas <= 0) {
 		setVivo(true);
+		corpo->Width = comp;
+        corpo->Height = alt;
 		//corpo->Scale->X = 0.2;
 		//corpo->Scale->Y = 0.2;
 	}
+	numVidas = n;
 }
 
 bool Entidade::getObstaculo()

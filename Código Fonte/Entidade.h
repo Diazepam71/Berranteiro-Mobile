@@ -1,10 +1,8 @@
 #pragma once
-//#include <SFML/Graphics.hpp>
 #include "Ente.h"
 
 namespace Entidades
 {
-
 	class Entidade: public Ente{
 	protected:
 		float velx, vely;
@@ -12,8 +10,8 @@ namespace Entidades
 		bool atacar;
 		bool obstaculo;
 		bool item;
+		bool projetil;
 		int numVidas;
-
 	public:
 		Entidade(const int v, TPointF p, Fmx::Types::TFmxObject* parent);
 		~Entidade();
@@ -34,6 +32,6 @@ namespace Entidades
 		virtual void setVidas(int n);
 		bool getObstaculo();
 		bool getIsItem() { return item; }
+        bool getProjetil() {return projetil; };
 	};
-
 }

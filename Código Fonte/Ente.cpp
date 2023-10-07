@@ -32,6 +32,8 @@ Ente::Ente(TPointF p, Fmx::Types::TFmxObject* owner)
 	corpo->Position->X = pos.X;
 	corpo->Position->Y = pos.Y;
 	atualizaPosRect();
+	comp = 0;
+	alt = 0;
 }
 
 Ente::~Ente() {

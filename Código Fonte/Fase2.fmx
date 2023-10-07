@@ -7,6 +7,7 @@ object Form3: TForm3
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  FullScreen = True
   DesignerMasterStyle = 3
   object Button1: TButton
     StyledSettings = []

@@ -8,6 +8,7 @@
 #include "Pistola.h"
 #include "Skorpion.h"
 #include "MP5.h"
+#include "Menu.h"
 #include <string>
 #include <System.Ioutils.hpp>
 //---------------------------------------------------------------------------
@@ -206,6 +207,19 @@ void __fastcall TForm2::soltar_arma(TObject *Sender)
             static_cast <Pistola*> (i)->setammo(x->getAmmo());
             static_cast <Pistola*> (i)->setmagvar(x->getMagvar());
         }
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::teclaApertada(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+          TShiftState Shift)
+{
+	if (Key == vkHardwareBack) {
+        Timer1->Enabled = false;
+		Key = 0;
+		dynamic_cast <TForm*> (this->Owner)->Show();
+		this->Hide();
+		dynamic_cast <TForm1*> (this->Owner)->atualizaPontos();
 	}
 }
 //---------------------------------------------------------------------------

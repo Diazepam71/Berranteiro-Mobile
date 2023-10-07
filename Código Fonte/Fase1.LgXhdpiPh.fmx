@@ -1,8 +1,9 @@
 inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
   BorderStyle = None
-  ClientHeight = 450
-  ClientWidth = 720
+  ClientHeight = 720
+  ClientWidth = 450
   Fill.Kind = Bitmap
+  OnKeyDown = teclaApertada
   DesignerMasterStyle = 3
   inherited Button1: TButton
     Position.X = 24.000000000000000000

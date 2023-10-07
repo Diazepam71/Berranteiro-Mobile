@@ -1,4 +1,3 @@
-
 #pragma once
 #include "Entidade.h"
 
@@ -28,8 +27,6 @@ namespace Entidades
             bool getVirado();
 
 
-        };
-
-    }
-
+		};
+	}
 }

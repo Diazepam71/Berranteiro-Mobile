@@ -1,5 +1,5 @@
 inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
-  ClientHeight = 425
+  ClientHeight = 450
   ClientWidth = 720
   Fill.Kind = Bitmap
   FullScreen = True
@@ -7,7 +7,7 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
   inherited Button1: TButton
     StyledSettings = []
     Position.X = 96.000000000000000000
-    Position.Y = 160.000000000000000000
+    Position.Y = 264.000000000000000000
     Size.Width = 137.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
@@ -42,19 +42,52 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
     Visible = False
   end
   inherited Button2: TButton
-    Position.X = 520.000000000000000000
+    Position.X = 304.000000000000000000
+    Position.Y = 264.000000000000000000
     Text = 'Fase 2'
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     OnClick = executarFase2
     OnEnter = selecionarBotao
   end
   inherited Button3: TButton
-    Position.X = 96.000000000000000000
+    Position.X = 520.000000000000000000
     Position.Y = 264.000000000000000000
     Text = 'Fase 3'
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     OnClick = executarFase3
     OnEnter = selecionarBotao
+  end
+  inherited Button4: TButton
+    Position.X = 504.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 177.000000000000000000
+    Text = 'Ranking'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = executarRanking
+    OnEnter = selecionarBotao
+    OnExit = desselecionarBotao
+  end
+  inherited Button5: TButton
+    Position.Y = 152.000000000000000000
+    Text = 'Login'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = login
+    OnEnter = nil
+  end
+  inherited Button6: TButton
+    Position.X = 287.000000000000000000
+    Text = 'Resumir'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = resumir
+    OnEnter = nil
     OnExit = nil
+  end
+  inherited FDConnection1: TFDConnection
+    Left = 104
+    Top = 336
+  end
+  inherited FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Left = 264
+    Top = 336
   end
 end

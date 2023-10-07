@@ -1,17 +1,18 @@
 inherited Form3_LgXhdpiPh: TForm3_LgXhdpiPh
-  ClientHeight = 425
-  ClientWidth = 720
+  BorderStyle = None
+  ClientHeight = 720
+  ClientWidth = 450
   Fill.Color = claBlack
   Fill.Kind = Solid
+  OnKeyDown = teclaApertada
   DesignerMasterStyle = 3
   inherited Button1: TButton
-    TabOrder = 11
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     OnClick = esquerda
     OnEnter = esquerda2
   end
   inherited Button2: TButton
-    TabOrder = 10
+    TabOrder = 9
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     OnClick = direita
     OnEnter = direita2

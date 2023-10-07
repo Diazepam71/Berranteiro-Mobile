@@ -24,6 +24,36 @@
 #include "GerenciadorColisao.h"
 #include <FMX.ImgList.hpp>
 #include <System.ImageList.hpp>
+#include <Data.DB.hpp>
+#include <FireDAC.Comp.Client.hpp>
+#include <FireDAC.FMXUI.Wait.hpp>
+#include <FireDAC.Phys.hpp>
+#include <FireDAC.Phys.Intf.hpp>
+#include <FireDAC.Stan.Async.hpp>
+#include <FireDAC.Stan.Def.hpp>
+#include <FireDAC.Stan.Error.hpp>
+#include <FireDAC.Stan.Intf.hpp>
+#include <FireDAC.Stan.Option.hpp>
+#include <FireDAC.Stan.Pool.hpp>
+#include <FireDAC.UI.Intf.hpp>
+#include <Data.Bind.Components.hpp>
+#include <Data.Bind.DBScope.hpp>
+#include <Data.Bind.EngExt.hpp>
+#include <FireDAC.Comp.DataSet.hpp>
+#include <FireDAC.DApt.hpp>
+#include <FireDAC.DApt.Intf.hpp>
+#include <FireDAC.DatS.hpp>
+#include <FireDAC.Phys.SQLite.hpp>
+#include <FireDAC.Phys.SQLiteDef.hpp>
+#include <FireDAC.Phys.SQLiteWrapper.Stat.hpp>
+#include <FireDAC.Stan.ExprFuncs.hpp>
+#include <FireDAC.Stan.Param.hpp>
+#include <Fmx.Bind.DBEngExt.hpp>
+#include <Fmx.Bind.Editors.hpp>
+#include <System.Bindings.Outputs.hpp>
+#include <System.Rtti.hpp>
+#include <FireDAC.FMXUI.Wait.hpp>
+#include <FireDAC.Comp.UI.hpp>
 using namespace Personagens;
 using namespace Gerenciadores;
 //---------------------------------------------------------------------------
@@ -40,6 +70,11 @@ __published:	// IDE-managed Components
 	TButton *Button3;
 	TTimer *Timer1;
 	TButton *Button4;
+	TBindingsList *BindingsList1;
+	TFDConnection *FDConnection1;
+	TLabel *Label1;
+	TFDQuery *FDQuery1;
+	TFDGUIxWaitCursor *FDGUIxWaitCursor1;
 	void __fastcall revolucao(TObject *Sender);
 	void __fastcall teclaApertada(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
           TShiftState Shift);
@@ -50,6 +85,7 @@ __published:	// IDE-managed Components
 	void __fastcall moveDir2(TObject *Sender);
 	void __fastcall fechar(TObject *Sender, TCloseAction &Action);
 	void __fastcall pular(TObject *Sender);
+	void __fastcall inicializa(TObject *Sender);
 private:	// User declarations
 	Ente* k;
 	Jogador* j;

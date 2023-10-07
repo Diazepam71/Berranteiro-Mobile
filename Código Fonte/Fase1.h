@@ -39,6 +39,8 @@ __published:	// IDE-managed Components
 	void __fastcall atacar2(TObject *Sender);
 	void __fastcall recarregar(TObject *Sender);
 	void __fastcall soltar_arma(TObject *Sender);
+	void __fastcall teclaApertada(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+          TShiftState Shift);
 private:	// User declarations
 	//TBitmap* imagem;
 	//Mapa* mapa;
@@ -47,7 +49,8 @@ private:	// User declarations
 	//Interface* interf;
 public:		// User declarations
 	__fastcall TForm2(TComponent* Owner);
-    void rolagem();
+	void rolagem();
+	ImpFase1* getF1() {return f1;};
 
 };
 //---------------------------------------------------------------------------

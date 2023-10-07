@@ -68,4 +68,39 @@ object Form6: TForm6
     TabOrder = 15
     Text = 'Button4'
   end
+  object Label1: TLabel
+    Position.X = 144.000000000000000000
+    Position.Y = 8.000000000000000000
+    Text = 'Label1'
+    TabOrder = 22
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'LockingMode=Normal'
+      
+        'Database=C:\Users\Ryzen\Documents\Embarcadero\Studio\Projects\Ap' +
+        'p Mobile\Ranking.db'
+      'DriverID=SQLite')
+    Connected = True
+    LoginPrompt = False
+    BeforeConnect = inicializa
+    Left = 456
+    Top = 72
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    Left = 456
+    Top = 160
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'FMX'
+    Left = 528
+    Top = 264
+  end
 end

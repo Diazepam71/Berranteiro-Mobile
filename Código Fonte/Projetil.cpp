@@ -11,6 +11,8 @@ Entidade(10,TPointF(x, y), parent)
 	atirador = NULL;
     direita = false;
 	ativado = false;
+	projetil = true;
+    dano = 40;
 	alcance = 800;
 	distanciaPercorrida = 0;
 	setAtacar(false);
@@ -18,6 +20,7 @@ Entidade(10,TPointF(x, y), parent)
 	corpo->Bitmap->Assign(textura);
 	corpo->Width = 16;
 	corpo->Height = 16;
+	relogio = clock();
 }
 Projetil::~Projetil()
 {
@@ -28,6 +31,10 @@ void Projetil::move()
 	velx = 0;
 	setAtacar(false);
 
+	/*if(vivo == false) if ((float)(clock() - relogio) / (float)CLOCKS_PER_SEC > 6.0) {
+		setVidas(10);
+	}*/
+
 	if(ativado == true)
 	{
 		setAtacar(true);
@@ -37,7 +44,7 @@ void Projetil::move()
 			velx = -6;
 
 		distanciaPercorrida = distanciaPercorrida + 6;
-		vely = sin(clock() / CLOCKS_PER_SEC * 8);
+		vely = sin((float)((float)(clock() - relogio) / (float)CLOCKS_PER_SEC) * 11);
 		
 		//if (distanciaPercorrida < alcance) { setVelY(0); }
 
@@ -58,7 +65,7 @@ void Projetil::move()
 		}
 	}
 
-	if((distanciaPercorrida > alcance) && (pos != atirador->getPos()))
+	if((distanciaPercorrida > alcance))
 	{
 		distanciaPercorrida = 0;
 		ativado = false;
@@ -84,4 +91,25 @@ void Projetil::setDireita(bool b)
 void Projetil::setAtirador(Inimigo *i)
 {
     atirador = i;
+}
+
+void Projetil::setVidas(int n) {
+    if (n <= 0 && numVidas > 0) {
+		comp = corpo->Width;
+		alt = corpo->Height;
+		setVivo(false);
+		corpo->Width = 0;
+		corpo->Height = 0;
+		relogio = clock();
+		ativado = false;
+	}
+	else if (n > 0 && numVidas <= 0) {
+		setVivo(true);
+		corpo->Width = comp;
+        corpo->Height = alt;
+		//corpo->Scale->X = 0.2;
+		//corpo->Scale->Y = 0.2;
+	}
+	numVidas = n;
+
 }

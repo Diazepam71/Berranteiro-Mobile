@@ -132,6 +132,39 @@ void GerenciadorColisao::executar() {
 						ent1->setVelY(0.0f);
 						flag2 = 1;
 					}
+					bool flag3 = 0;
+					if (trunc(ent1->getPos().X + ent1->getTamX()) <= hbx->getPos().X + 16 && ent1->getPos().Y >= hbx->getPos().Y - ent1->getTamY() + 8) {
+						ent1->setPos(TPointF(hbx->getPos().x - ent1->getTamX(), ent1->getPos().y));
+
+						ent1->setVelY(ent1->getVelY() / 1.1f);
+						flag3 = 1;
+					}
+					else if (ent1->getPos().X - 8 >= hbx->getPos().X + hbx->getTamX() - 16 && ent1->getPos().Y >= hbx->getPos().Y - ent1->getTamY() + 8) {
+						ent1->setPos(TPointF(hbx->getPos().x + hbx->getTamX(), ent1->getPos().y));
+						//std::cout << "Colisao com a esquerda.\n";
+						//if (pJogador->getVel().y <= 0.6 && pJogador->getVel().y >= 0.2) pJogador->setVelY(-0.3f);
+						//else pJogador->setVelY(pJogador->getVel().y / 2.0f);
+						ent1->setVelY(ent1->getVelY() / 1.1f);
+						flag3 = 1;
+					}
+
+						else if (trunc(ent1->getPos().Y + ent1->getTamY()) + 8 >= trunc(hbx->getPos().Y) && ent1->getVelY() >= 0 && ent1->getPos().y < hbx->getPos().y) {
+							//std::cout << "Colisao abaixo.\n";
+							//int py = pJogador->getPos().y / 32;
+							//py = py * 32;
+							if (ent1->getVelY() > 0) {
+								ent1->setPos(TPointF(ent1->getPos().X, hbx->getPos().Y - 73));
+							}
+							ent1->setVelY(0.0f);
+							//pJogador->setPos(sf::Vector2f(pJogador->getPos().x, trunc(hbx->getPos().y - pJogador->getTam().y)));
+							flag3 = 1;
+						}
+
+					else if (ent1->getPos().Y >= hbx->getPos().Y + hbx->getTamY() - 16) {
+						//std::cout << "Colisao acima.\n";
+						ent1->setVelY(-(ent1->getVelY()));
+						ent1->setPos(TPointF(ent1->getPos().X, hbx->getPos().Y + hbx->getTamY()));
+					}
 
 				}
 				//else if (ent1->getPos().x + ent1->getTam().x >= hbx->getPos().x)

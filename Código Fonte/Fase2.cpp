@@ -8,6 +8,7 @@
 #include "Pistola.h"
 #include "Skorpion.h"
 #include "MP5.h"
+#include "Menu.h"
 using namespace Itens;
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -150,3 +151,16 @@ void TForm3::rolagem() {
         f1->getMapa2()->reposMapa(-f1->getJogador()->getVelX(), 0);
 	}
 }
+void __fastcall TForm3::teclaApertada(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+          TShiftState Shift)
+{
+	if (Key == vkHardwareBack) {
+    	Timer1->Enabled = false;
+		Key = 0;
+		dynamic_cast <TForm*> (this->Owner)->Show();
+		this->Hide();
+		dynamic_cast <TForm1*> (this->Owner)->atualizaPontos();
+	}
+}
+//---------------------------------------------------------------------------
+

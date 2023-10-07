@@ -12,8 +12,7 @@ private:
 	float len, ini;
 	TBitmap* imagem;
 	Fmx::Types::TFmxObject* Parent;
-    int start;
-
+	int start;
 public:
 	Mapa();
 	Mapa(TPointF ini, TPointF fim, TBitmap* img, Fmx::Types::TFmxObject* parent);

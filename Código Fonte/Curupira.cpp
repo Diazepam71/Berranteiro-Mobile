@@ -177,8 +177,7 @@ void Curupira::ressucitarAnimais()
 	while(aux->getProximo()->getProximo()!=NULL)
 	{
 		tipo = aux->getInfo();
-		tipo->setVivo(true);
-		tipo++;
+		tipo->setVidas(10);
 		aux = aux->getProximo();
 	}
 
@@ -200,6 +199,8 @@ void Curupira::setVidas(int x) {
 		Item* i = f->geraItem(pos.x, pos.y, item);
 		static_cast <Chave*> (i)->setFase(f);
 		vivo = false;
+		corpo->Width = 0;
+        corpo->Height = 0;
 	}
 	else vivo = true;
 }

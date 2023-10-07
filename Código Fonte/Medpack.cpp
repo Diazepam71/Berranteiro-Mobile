@@ -26,6 +26,8 @@ void Medpack::pegar() {
 	char arr[s.length() + 1];
 	strcpy(arr, s.c_str());
 	f->getInterface()->setInstrucao(System::UnicodeString(arr));
+	corpo->Width = 0;
+    corpo->Height = 0;
 }
 
 void Medpack::setValor(int f0) {
