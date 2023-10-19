@@ -102,11 +102,25 @@ void Projetil::setVidas(int n) {
 		corpo->Height = 0;
 		relogio = clock();
 		ativado = false;
+		static_cast <Curupira*> (atirador)->setAtacar(false);
+		static_cast <Curupira*> (atirador)->setAtirar(false);
+		static_cast <Curupira*> (atirador)->setClockProj(clock());
+		vely = 0;
+		velx = 0;
+        if (atirador->getVirado() == 0) {
+			if (atirador->getAtacar() == 1) setPos(TPointF(atirador->getPos().x + atirador->getTamX(), atirador->getPos().y + 40));
+			else setPos(TPointF(atirador->getPos().x + atirador->getTamX() + this->getTamX(), atirador->getPos().y + 40));
+		}
+		else {
+			if (atirador->getAtacar() == 1) setPos(TPointF(atirador->getPos().x, atirador->getPos().y + 40));
+			else setPos(TPointF(atirador->getPos().x - this->getTamX(), atirador->getPos().y + 40));
+		}
 	}
 	else if (n > 0 && numVidas <= 0) {
 		setVivo(true);
 		corpo->Width = comp;
-        corpo->Height = alt;
+		corpo->Height = alt;
+        //static_cast <Curupira*> (atirador)->setAtirar(true);
 		//corpo->Scale->X = 0.2;
 		//corpo->Scale->Y = 0.2;
 	}

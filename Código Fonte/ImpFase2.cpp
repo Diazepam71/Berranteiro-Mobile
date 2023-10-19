@@ -54,6 +54,7 @@ ImpFase2::ImpFase2(Fmx::Types::TFmxObject* parent, System::Classes::TComponent* 
 
     ShowMessage((float) (clock() - timer + f) / CLOCKS_PER_SEC);
 	//f1->play();
+    inicio = clock();
 }
 
 ImpFase2::~ImpFase2(){
@@ -114,7 +115,8 @@ void ImpFase2::geraInimigos()
     inimigos->add(static_cast<Entidade*>(c->getFogo()));
     lista->add(static_cast<Entidade*>(c->getFogo()));
 
-    c->setLista(inimigos);
+	c->setLista(inimigos);
+    c->setItem("trigger_fase3");
 
     j1->setl_ini(inimigos);
 }
@@ -168,6 +170,24 @@ void ImpFase2::geraObstaculos() {
 }
 
 void ImpFase2::geraItens() {
-	geraItem(4900, 900, "pistola");
-	geraItem(9200, 768, "mp5");
+	Item* i = NULL;
+	//geraItem(4900, 900, "pistola");
+	i = geraItem(5500, 1000, "caixa");
+	static_cast <Caixa*> (i)->setI1("pistola");
+	static_cast <Caixa*> (i)->setI2("medpack");
+	geraItem(8076, 512, "caixa");
+	geraItem(8160, 940, "medpack");
+	geraItem(8220, 940, "medpack");
+	geraItem(9200, 768, "skorpion");
+	geraItem(9200, 900, "medpack");
+	geraItem(9280, 900, "medpack");
+	geraItem(10200, 380, "municaomp5");
+	geraItem(4770 * 2, 700, "municaoskorpion");
+	i = geraItem(5680 * 2, 560, "caixa");
+	static_cast <Caixa*> (i)->setI1("pistola");
+	static_cast <Caixa*> (i)->setI2("medpack");
+	i = geraItem(5720 * 2, 780, "caixa");
+	static_cast <Caixa*> (i)->setI1("municaomp5");
+	static_cast <Caixa*> (i)->setI2("medpack");
+	geraItem(4690 * 2, 1500, "mp5");
 }

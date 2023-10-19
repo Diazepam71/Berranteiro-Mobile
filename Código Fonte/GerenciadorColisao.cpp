@@ -1,6 +1,6 @@
 #include "GerenciadorColisao.h"
 #include "Item.h"
-///#include "Obstaculo.h"
+#include "Obstaculo.h"
 #include <cmath>
 
 using namespace Gerenciadores;
@@ -56,7 +56,7 @@ void GerenciadorColisao::executar() {
 	bool flag4 = false;
 	bool flag3 = false;
 
-	//for (int i = 0; i < inimigos->getLista()->getTam() - 1; i++) {
+	//for (int i = 0; i < inimigos->getLista()->getTam() - 1; i++)
 		//Entidade* ent1 = inimigos->getLista()->getElX(i)->getInfo();
 		for (j = 0; j <= inimigos->getLista()->getTam(); j++) {
 			Entidade* ent2 = inimigos->getLista()->getElX(j)->getInfo();
@@ -122,9 +122,9 @@ void GerenciadorColisao::executar() {
 			if ((ent1->getPos().x > 800) || ent1->getPos().x < -100 || ent1->getPos().y > 500 || ent1->getPos().y < -100) continue;
 			for (j = 0; j < map->getColidiveis()->getTam(); j++) {
 				Plataforma* hbx = map->getColidiveis()->getElX(j)->getInfo();
-				if ((hbx->getPos().x > 800 && hbx->getPos().x + hbx->getTamX() > 800)
-					|| (hbx->getPos().x < -100 && hbx->getPos().x + hbx->getTamX() < -100)
-					|| hbx->getPos().y > 500 || hbx->getPos().y < -100) continue;
+				if ((hbx->getPos().x > 1000 && hbx->getPos().x + hbx->getTamX() > 1000)
+					|| (hbx->getPos().x < -400 && hbx->getPos().x + hbx->getTamX() < -400)
+					|| hbx->getPos().y > 800 || hbx->getPos().y < -100) continue;
 				TPointF ds = calculaColisaoPlat(ent1, hbx);
 				if (ds.x < 0.0f && ds.y < 0.0f) {
 					//std::cout << "Ocorre uma colisao 2 - Inimigo.\n";
@@ -172,6 +172,15 @@ void GerenciadorColisao::executar() {
 			}
 			if (flag2 == 0) ent1->cair();
 		}
+
+		/*for (int j = 1; j <= inimigos->getLista()->getTam(); j++) {
+			Entidade* e1 = inimigos->getLista()->getElX(j)->getInfo();
+			for (int k = 1; k <= inimigos->getLista()->getTam(); k++) {
+				Entidade* e2 = inimigos->getLista()->getElX(k)->getInfo();
+				if (e2->getObstaculo() == false) continue;
+				e1->setVidas(e1->getVidas() - static_cast <Obstaculo*> (e2)->getDano());
+            }
+        } */
 	}
 
 
@@ -193,3 +202,15 @@ Ente* GerenciadorColisao::hitscan(Jogador* j, Ente* e) {
 	}
 	return NULL;
 } */
+
+void GerenciadorColisao::trataExplosao(Entidade* expl) {
+	for (int i = 1; i <= inimigos->getLista()->getTam(); i++) {
+		Entidade* e1 = inimigos->getLista()->getElX(i)->getInfo();
+        if (expl == e1) continue;
+		TPointF ds = calculaColisaoIni(expl, e1);
+		if (ds.x < 0.0f && ds.y < 0.0f) {
+            e1->setVidas(e1->getVidas() - static_cast <Obstaculo*> (expl)->getDano());
+        }
+    }
+
+}

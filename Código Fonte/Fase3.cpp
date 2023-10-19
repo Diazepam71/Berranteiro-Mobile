@@ -9,6 +9,7 @@
 #include "Skorpion.h"
 #include "MP5.h"
 #include "Menu.h"
+#include "Granada.h"
 using namespace Itens;
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -24,9 +25,9 @@ __fastcall TForm4::TForm4(TComponent* Owner)
 	f1 = new ImpFase3(this, this);
 	//f1->getLista()->reposLista(-4000, -600);
     //f1->getMapa2()->reposMapa(-4000, -600);
-	ShowMessage("ImpFase1: ");
-	ShowMessage((float) (clock() - timer1) / CLOCKS_PER_SEC);
-	ShowMessage("Resto: ");
+	//ShowMessage("ImpFase1: ");
+	//ShowMessage((float) (clock() - timer1) / CLOCKS_PER_SEC);
+	//ShowMessage("Resto: ");
 	clock_t timer2 = clock();
 	f1->getJogador()->setOwner(this);
 	f1->setJogador1(f1->getJogador());
@@ -40,7 +41,7 @@ __fastcall TForm4::TForm4(TComponent* Owner)
     Button8->BringToFront();
 	//dynamic_cast <TForm*> (Owner)->Hide();
 	//this->Show();
-	ShowMessage((float) (clock() - timer2) / CLOCKS_PER_SEC);
+	//ShowMessage((float) (clock() - timer2) / CLOCKS_PER_SEC);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm4::soltar_arma(TObject *Sender)
@@ -92,7 +93,7 @@ void __fastcall TForm4::trocar_arma(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm4::pular(TObject *Sender)
 {
-	f1->getJogador()->setVelY(-10);
+	if (f1->getJogador()->verifPular() == true) f1->getJogador()->setVelY(-10);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm4::esquerda(TObject *Sender)
@@ -135,6 +136,19 @@ void __fastcall TForm4::atacar(TObject *Sender)
     f1->getJogador()->setAtacar(true);
     f1->getJogador()->verifImg();
 	f1->getJogador()->atirar();
+	Jogador* j = f1->getJogador();
+	if (j->getl_arma()->getElX(j->getArmaSel())->getInfo()->getNome() == "granada") {
+		Arma* x = j->getl_arma()->getElX(j->getArmaSel())->getInfo();
+		//if ((((float) x->getClock() - clock()) / CLOCKS_PER_SEC) < x->getCad()) return;
+		x->setClock(clock());
+		if (x->getAmmo() <= 0) return;
+		Item* i = f1->geraItem(j->getPos().x, j->getPos().y, "granada");
+		if (j->getVirado() == false) i->setVelX(8);
+        else i->setVelX(-8);
+		i->setVelY(-6);
+		static_cast <Granada*> (i)->setAtiva(true);
+		x->setAmmo(x->getAmmo() - 1);
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -165,6 +179,7 @@ void __fastcall TForm4::teclaApertada(TObject *Sender, WORD &Key, System::WideCh
 		dynamic_cast <TForm*> (this->Owner)->Show();
 		this->Hide();
 		dynamic_cast <TForm1*> (this->Owner)->atualizaPontos();
+        dynamic_cast <TForm1*> (this->Owner)->verifResumir();
 	}
 }
 //---------------------------------------------------------------------------

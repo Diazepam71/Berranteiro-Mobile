@@ -60,6 +60,7 @@ __published:	// IDE-managed Components
 	void __fastcall executarRanking(TObject *Sender);
 	void __fastcall login(TObject *Sender);
 	void __fastcall resumir(TObject *Sender);
+	void __fastcall ajustar(TObject *Sender);
 	//TForm2* fase1;
 private:	// User declarations
 	 TForm2* fase1;
@@ -72,7 +73,12 @@ public:		//User declarations
 	void mostrarItens();
 	System::UnicodeString usuario;
 	void setUsuario(System::UnicodeString s);
-    void atualizaPontos();
+	void atualizaPontos();
+	void verifResumir();
+	void setF1(TForm2* f) {fase1 = f;};
+	void setF2(TForm3* f) {fase2 = f;};
+	void setF3(TForm4* f) {fase3 = f;};
+    void atualizaTempo();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

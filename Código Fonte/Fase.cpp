@@ -9,6 +9,9 @@
 #include "Porta.h"
 #include "MunicaoMP5.h"
 #include "MunicaoSkorpion.h"
+#include "TriggerFase.h"
+#include "Explosao.h"
+#include "Granada.h"
 using namespace Itens;
 
 using namespace Fases;
@@ -103,13 +106,14 @@ void Fase::geraArara(float x, float y)
 
 }
 
-void Fase::geraSoldado(float x, float y, int s)
+Inimigo* Fase::geraSoldado(float x, float y, int s)
 {
     Soldado *ini; 
     ini = new Soldado(j1, x, y, s, Parent, Owner);
     inimigos->add(static_cast<Entidade*>(ini));
     lista->add(static_cast<Entidade*>(ini));
-    ini->setFase(this);
+	ini->setFase(this);
+    return ini;
 }
 
 void Fase::geraPedra(float x, float y)
@@ -172,6 +176,26 @@ Item* Fase::geraItem(float x, float y, string nome) {
 		i = new MunicaoSkorpion(j1, x, y, Parent, Owner);
         static_cast <MunicaoSkorpion*> (i)->setFase(this);
 	}
+	else if (nome == "trigger_fase1") {
+		i = new TriggerFase(1, j1, x, y, Parent, Owner);
+		static_cast <TriggerFase*> (i)->setFAtual(this);
+	}
+	else if (nome == "trigger_fase2") {
+		i = new TriggerFase(2, j1, x, y, Parent, Owner);
+		static_cast <TriggerFase*> (i)->setFAtual(this);
+	}
+	else if (nome == "trigger_fase3") {
+		i = new TriggerFase(3, j1, x, y, Parent, Owner);
+		static_cast <TriggerFase*> (i)->setFAtual(this);
+	}
+	else if (nome == "trigger_fase0") {
+		i = new TriggerFase(0, j1, x, y, Parent, Owner);
+		static_cast <TriggerFase*> (i)->setFAtual(this);
+	}
+	else if (nome == "granada") {
+		i = new Granada(j1, x, y, Parent, Owner);
+        static_cast <Granada*> (i)->setFase(this);
+    }
     if (i != NULL) {
         lista->add(static_cast <Entidade*> (i));
         inimigos->add(static_cast <Entidade*> (i));
@@ -233,3 +257,11 @@ Interface* Fase::getInterface() { return interf; }
 }            */
 
 void Fase::setParent(Fmx::Types::TFmxObject* parent) {Parent = parent;}
+
+void Fase::geraExplosao(float x, float y, float s) {
+	Explosao* e = new Explosao(s, x, y, Parent, Owner);
+    e->setFase(this);
+	lista->add(e);
+	inimigos->add(e);
+
+}

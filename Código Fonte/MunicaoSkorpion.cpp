@@ -10,6 +10,7 @@ MunicaoSkorpion::MunicaoSkorpion(Jogador* jo, float sx, float sy, Fmx::Types::TF
 	corpo->Position->Point = TPointF(sx, sy);
 	nome = "municaoskorpion";
 	valor = 30;
+    inicio = clock();
 }
 
 MunicaoSkorpion::~MunicaoSkorpion() {}
@@ -30,5 +31,16 @@ void MunicaoSkorpion::pegar() {
 			corpo->Height = 0;
 		}
 	}
+
+}
+
+void MunicaoSkorpion::setVidas(int n) {
+	if (numVidas > 0 && n <= 0) {
+		if ((((float) clock() - inicio) /CLOCKS_PER_SEC) < 1) return;
+		corpo->Width = 0;
+		corpo->Height = 0;
+		vivo = false;
+	}
+	numVidas = n;
 
 }

@@ -27,6 +27,7 @@ void Porta::pegar() {
 		strcpy(arr, s.c_str());
 		f->getInterface()->setInstrucao(System::UnicodeString(arr));
 		j->colisaoMapaObs(static_cast <Entidade*> (this));
+		j->setVelY(j->getVelY() - 0.3);
 	}
 }
 

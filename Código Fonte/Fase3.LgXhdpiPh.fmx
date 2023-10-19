@@ -7,13 +7,13 @@ inherited Form4_LgXhdpiPh: TForm4_LgXhdpiPh
   OnKeyDown = teclaApertada
   DesignerMasterStyle = 3
   inherited Button1: TButton
-    TabOrder = 11
+    TabOrder = 10
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     OnClick = esquerda
     OnEnter = esquerda2
   end
   inherited Button2: TButton
-    TabOrder = 10
+    TabOrder = 9
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     OnClick = direita
     OnEnter = direita2
@@ -45,6 +45,7 @@ inherited Form4_LgXhdpiPh: TForm4_LgXhdpiPh
     OnClick = recarregar
   end
   inherited Timer1: TTimer
+    Interval = 15
     OnTimer = loop
   end
 end

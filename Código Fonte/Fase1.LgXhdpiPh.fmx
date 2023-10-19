@@ -38,7 +38,7 @@ inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
     OnClick = quadro
   end
   inherited Timer1: TTimer
-    Interval = 17
+    Interval = 15
     OnTimer = loop
     Left = 128
     Top = 24

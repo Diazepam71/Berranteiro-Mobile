@@ -11,6 +11,7 @@ namespace Itens {
 	private:
 		Fase* f;
 		int valor;
+		clock_t inicio;
 
 	public:
 		MunicaoSkorpion(Jogador* jo, float sx, float sy, Fmx::Types::TFmxObject* parent, System::Classes::TComponent* owner);
@@ -18,5 +19,6 @@ namespace Itens {
 		void pegar();
 		void setFase(Fase* f0) { f = f0; }
 		void setValor(int x) { valor = x; }
+        void setVidas(int n);
 	};
 }

@@ -262,7 +262,7 @@ void Jogador::atirar() {
 		x->setRecarregando(0);
 	}
 	else if (x->getRecarregando() == 1) x->setDry(1);
-	if (x->getDry() == 1) {
+	if (x->getDry() == 1 && x->getNome() != "granada") {
 		x->getSomDry()->Play();
 		return;
 	}
@@ -284,6 +284,7 @@ void Jogador::atirar() {
 	x->setClock(t1);
 	if (x->getSom()->State == TMediaState::Playing) x->getSom()->CurrentTime = 0;
 	x->getSom()->Play();
+    if (x->getNome() == "granada") return;
 	Ente* e = NULL, *e1 = NULL;
 	int cont = 1, min=99999999999;
 	while (ini->getLista()->getTam() >= cont) {
@@ -318,4 +319,9 @@ void Jogador::atirar() {
 		//ShowMessage("Matou.");
 	}
 	//else std::cout << "Nao matou.\n";
+}
+
+bool Jogador::verifPular() {
+	if (vely >= -0.3 && vely <= 0.3) return true;
+	return false;
 }

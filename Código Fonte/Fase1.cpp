@@ -22,27 +22,12 @@ TForm2 *Form2;
 __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner)
 {
-	//imagem = new TBitmap();
-	//imagem->LoadFromFile(System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Fase1.png"));
-	//mapa = new Mapa(TPointF(0, 0), TPointF(4000, 1120), imagem, this);
-	//mapa->imprimir();
-	//TBitmap* img = new TBitmap();
-
-	/*img->LoadFromFile(System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Teste Tilemap2.png"));
-	TPointF* ponto = (TPointF*) malloc(sizeof(TPointF));
-	*ponto = TPointF(0, 352);
-	p = new Plataforma(ponto, img, this);
-	free(ponto);
-	p->setPos(TPointF(0, 352)); */
-	//p1 = mapa->getLista()->getElX(1)->getInfo();
-	//p2 = mapa->getLista()->getElX(2)->getInfo();
-	//p3 = mapa->getLista()->getElX(3)->getInfo();
 
 	clock_t timer1 = clock();
 	f1 = new ImpFase1(this, this);
-	ShowMessage("ImpFase1: ");
-	ShowMessage((float) (clock() - timer1) / CLOCKS_PER_SEC);
-	ShowMessage("Resto: ");
+	//ShowMessage("ImpFase1: ");
+	//ShowMessage((float) (clock() - timer1) / CLOCKS_PER_SEC);
+	//ShowMessage("Resto: ");
 	clock_t timer2 = clock();
 	f1->getJogador()->setOwner(this);
 	f1->setJogador1(f1->getJogador());
@@ -56,7 +41,7 @@ __fastcall TForm2::TForm2(TComponent* Owner)
     Button8->BringToFront();
 	//dynamic_cast <TForm*> (Owner)->Hide();
 	//this->Show();
-	ShowMessage((float) (clock() - timer2) / CLOCKS_PER_SEC);
+	//ShowMessage((float) (clock() - timer2) / CLOCKS_PER_SEC);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm2::loop(TObject *Sender)
@@ -76,7 +61,7 @@ void __fastcall TForm2::loop(TObject *Sender)
 
 void __fastcall TForm2::pular(TObject *Sender)
 {
-	f1->getJogador()->setVelY(-10);
+	if (f1->getJogador()->verifPular() == true) f1->getJogador()->setVelY(-10);
 }
 //---------------------------------------------------------------------------
 
@@ -220,6 +205,7 @@ void __fastcall TForm2::teclaApertada(TObject *Sender, WORD &Key, System::WideCh
 		dynamic_cast <TForm*> (this->Owner)->Show();
 		this->Hide();
 		dynamic_cast <TForm1*> (this->Owner)->atualizaPontos();
+        dynamic_cast <TForm1*> (this->Owner)->verifResumir();
 	}
 }
 //---------------------------------------------------------------------------

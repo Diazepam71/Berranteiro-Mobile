@@ -10,6 +10,7 @@
 #include "Caixa.h"
 #include "Chave.h"
 #include "Porta.h"
+#include "Soldado.h"
 #include <iostream>
 #include <Fmx.Dialogs.hpp>
 
@@ -58,6 +59,7 @@ ImpFase3::ImpFase3(Fmx::Types::TFmxObject* parent, System::Classes::TComponent* 
 
     ShowMessage((float) (clock() - timer + f) / CLOCKS_PER_SEC);
 	//f1->play();
+    inicio = clock();
 }
 
 ImpFase3::~ImpFase3(){
@@ -97,14 +99,30 @@ void ImpFase3::geraInimigos()
     geraOnca(78 * 32, 51 * 32);
     geraArara(44 * 32, 54 * 32);
     geraArara(54 * 32, 54 * 32);
-    geraOnca(33 * 32, 56 * 32);
-    geraSoldado(131 * 32, 54 * 32, 1);
-    geraOnca(91 * 32, 39 * 32);
+	geraOnca(33 * 32, 56 * 32);
+	geraSoldado(131 * 32, 54 * 32, 1);
+	geraOnca(91 * 32, 39 * 32);
     geraArara(99 * 32, 14 * 32);
     geraArara(98 * 32, 25 * 32);
     geraArara(96 * 32, 35 * 32);
     geraSoldado(125 * 32, 8 * 32, 2);
-    geraOnca(113 * 32, 22 * 32);
+	geraOnca(113 * 32, 22 * 32);
+	geraSoldado(163 * 32, 42 * 32, 1);
+	geraSoldado(165 * 32, 42 * 32, 2);
+	geraSoldado(168 * 32, 42 * 32, 1);
+	geraSoldado(205 * 32, 34 * 32, 1);
+	geraSoldado(183 * 32, 31 * 32, 2);
+	geraSoldado(172 * 32, 30 * 32, 2);
+	geraSoldado(206 * 32, 28 * 32, 1);
+	Inimigo* x = geraSoldado(208 * 32, 40 * 32, 2);
+	static_cast <Soldado*> (x)->setItem("chave-A5");
+	geraOnca(180 * 32, 25 * 32);
+	geraOnca(186 * 32, 25 * 32);
+	geraOnca(192 * 32, 25 * 32);
+	geraOnca(195 * 32, 25 * 32);
+	geraArara(181 * 32, 24 * 32);
+	geraArara(185 * 32, 24 * 32);
+    geraArara(187 * 32, 24 * 32);
 
 
 
@@ -213,7 +231,20 @@ void ImpFase3::geraItens() {
     static_cast <Caixa*> (i)->setI1("medpack");
     static_cast <Caixa*> (i)->setI2("skorpion");
     i = geraItem(141 * 32, 58 * 32, "medpack");
-    static_cast <Medpack*> (i)->setValor(47);
+	static_cast <Medpack*> (i)->setValor(47);
+	//geraItem(5000, 1500, "trigger_fase0");
+	geraItem(300, 150, "granada");
+	geraItem(48 * 32, 6 * 32, "granada");
+	geraItem(70 * 32, 46 * 32, "granada");
+	geraItem(146 * 32, 56 * 32, "granada");
+	geraItem(148 * 32, 56 * 32, "granada");
+	geraItem(162 * 32, 25 * 32, "granada");
+	geraItem(164 * 32, 25 * 32, "granada");
+	geraItem(172 * 32, 25 * 32, "mp5");
+	i = geraItem(199 * 32, 24 * 32, "porta");
+	static_cast <Porta*> (i)->setString("A5");
+	geraItem(173 * 32, 56 * 32, "trigger_fase0");
+	geraItem(178 * 32, 25 * 32, "chave-B3");
 }
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

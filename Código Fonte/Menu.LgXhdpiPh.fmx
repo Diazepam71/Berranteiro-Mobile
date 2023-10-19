@@ -1,8 +1,9 @@
 inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
-  ClientHeight = 450
-  ClientWidth = 720
+  ClientHeight = 720
+  ClientWidth = 450
   Fill.Kind = Bitmap
   FullScreen = True
+  OnShow = ajustar
   DesignerMasterStyle = 3
   inherited Button1: TButton
     StyledSettings = []
@@ -72,15 +73,14 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
     Text = 'Login'
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     OnClick = login
-    OnEnter = nil
   end
   inherited Button6: TButton
+    Enabled = False
     Position.X = 287.000000000000000000
     Text = 'Resumir'
     TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claGray
     OnClick = resumir
-    OnEnter = nil
-    OnExit = nil
   end
   inherited FDConnection1: TFDConnection
     Left = 104

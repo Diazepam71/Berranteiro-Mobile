@@ -43,6 +43,7 @@ inherited Form3_LgXhdpiPh: TForm3_LgXhdpiPh
     OnClick = recarregar
   end
   inherited Timer1: TTimer
+    Interval = 15
     OnTimer = loop
   end
 end

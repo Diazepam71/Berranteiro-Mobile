@@ -14,7 +14,7 @@ Obstaculo::~Obstaculo() {}
 void Obstaculo::move() { 
 	//cair();
 
-	if (pos.x > 800 || pos.x < -100 || pos.y > 500 || pos.y < -100) {
+	if (pos.x > 600 || pos.x < -100 || pos.y > 450 || pos.y < -100) {
         setVelX(0.0f);
 		setVelY(0.0f);
     }

@@ -11,7 +11,7 @@ Medpack::Medpack(Jogador* jo, float sx, float sy, Fmx::Types::TFmxObject* parent
 	corpo->Position->Point = TPointF(sx, sy);
 	//corpo.setScale(0.4f, 0.4f);
 	nome = "medpack";
-	valor = 10;
+	valor = 15;
 }
 
 Medpack::~Medpack() {}

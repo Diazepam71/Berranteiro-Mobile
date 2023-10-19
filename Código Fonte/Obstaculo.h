@@ -13,7 +13,7 @@ namespace Entidades
 	public:
 		Obstaculo(float x, float y, Fmx::Types::TFmxObject* parent);
 		~Obstaculo();
-		void move();
+		virtual void move();
 		int getDano() { return danoso; }
 		bool getColidivel() { return colidivel; }
 		void setColidivel(bool b) { colidivel = b; }

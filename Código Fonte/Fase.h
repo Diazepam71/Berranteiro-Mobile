@@ -34,12 +34,13 @@ namespace Fases
 			TBitmap* imagem;
 			Fmx::Types::TFmxObject* Parent;
 			System::Classes::TComponent* Owner;
-            Lista<Obstaculo>* obs;
+			Lista<Obstaculo>* obs;
+			clock_t inicio;
 
         public:
             Fase();
 			Fase(Fmx::Types::TFmxObject* parent, System::Classes::TComponent* owner);
-			~Fase();
+			virtual ~Fase();
             virtual void executar() = 0;
 			void setJogador1(Jogador *j);
             void setEntes(ListaEntes *l);
@@ -56,10 +57,12 @@ namespace Fases
 			void geraPedra(float x, float y);
 			void geraEspinho(float x, float y, int tam);
 			Item* geraItem(float x, float y, string nome);
-			void geraSoldado(float x, float y, int s);
+			Inimigo* geraSoldado(float x, float y, int s);
 			void moveLista();
             GerenciadorColisao* getGCol() {return pColi;};
 			Interface* getInterface();
+			clock_t getTempoInicio() {return inicio;};
+            void geraExplosao(float x, float y, float s);
 			//void jogador_soltarArma();
     };
 

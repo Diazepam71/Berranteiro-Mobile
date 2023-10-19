@@ -19,7 +19,8 @@ namespace Entidades
 				clock_t relogio;
                 float dt;
                 int contador;
-                Fase* f;
+				Fase* f;
+				string item;
 
             public:
 				Soldado(Jogador *j1, float x, float y, int s, Fmx::Types::TFmxObject* parent, System::Classes::TComponent* owner);
@@ -32,7 +33,8 @@ namespace Entidades
 				void afastar(TPointF posiJogador);
                 void ataque(TPointF posiJogador);
                 void setVidas(int n);
-                void setFase(Fase* f0) { f = f0; };
+				void setFase(Fase* f0) { f = f0; };
+                void setItem(string s) {item = s;};
 
 			    //void atirar();
 			    Ente* hitscan(Ente* e);

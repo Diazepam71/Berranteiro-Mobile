@@ -106,7 +106,24 @@ Arma::Arma(string n, System::Classes::TComponent* owner) {
 			magvar = 320;
 		}
 		s->FileName = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"MP5.wav");
-        r1->FileName = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"MP5.wav");
+		r1->FileName = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"MP5.wav");
+		e->FileName = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Load Gun.wav");
+	}
+	else if (nome == "granada") {
+		cad = 1;
+		dano = 300;
+		rec = 0.1;
+		alc = 9999;
+		hitscan = 0;
+		mag = 9999;
+		magvar = 1;
+		ammo = 1;
+		Tesq->LoadFromFile(System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Granada-E.png"));
+		Tdir->LoadFromFile(System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Granada-D.png"));
+		Adir->LoadFromFile(System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Granada-AD.png"));
+		Aesq->LoadFromFile(System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Granada-AE.png"));
+		s->FileName = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Arremesso.wav");
+		r1->FileName = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Arremesso.wav");
 		e->FileName = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath(), L"Load Gun.wav");
 	}
     //ShowMessage("Construcao concluida!");

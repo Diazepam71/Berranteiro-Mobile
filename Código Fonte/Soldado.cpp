@@ -4,12 +4,14 @@
 #include "Skorpion.h"
 #include "MunicaoMP5.h"
 #include "MunicaoSkorpion.h"
+#include "Chave.h"
 using namespace Itens;
 using namespace Entidades;
 using namespace Personagens;
 Soldado::Soldado(Jogador *j1, float x, float y, int s, Fmx::Types::TFmxObject* parent, System::Classes::TComponent* owner) :
 Inimigo(j1, x, y, parent)
 {
+	item = "";
 	contador = 0;
 	corre = false;
 	int i;
@@ -204,10 +206,15 @@ void Soldado::setVidas(int n) {
 	numVidas = n;
 	if (numVidas <= 0) {
 		vivo = false;
+        Item* i = f->geraItem(pos.x, pos.y, item);
+		if (item.operator[](0) == 'c' && item.operator[](1) == 'h')  static_cast <Chave*> (i)->setFase(f);
 		srand(time(NULL));
 		int x = rand() % 2;
         corpo->Width = 0;
 		corpo->Height = 0;
+		jogador1->setPontos(jogador1->getPontos() + 150);
+		int z = rand() % 2;
+		if (z == 1) f->geraItem(pos.X + 30, pos.Y + 30, "granada");
 		if (x != 1) return;
 		if (skin == 1) {
 			Item* i = f->geraItem(pos.x, pos.y, "municaomp5");

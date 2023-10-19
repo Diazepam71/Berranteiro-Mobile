@@ -22,7 +22,9 @@ Caixa::Caixa(Jogador* jo, float sx, float sy, Fmx::Types::TFmxObject* parent, Sy
 Caixa::~Caixa() {}
 
 void Caixa::pegar() {
+	if (j->getAtacar() == true) setVidas(0);
 	j->colisaoMapaObs(this);
+    j->setVelY(j->getVelY() - 0.3);
 }
 
 void Caixa::findar() {
@@ -47,21 +49,23 @@ void Caixa::findar() {
 	
 
 	else {
-		int x = rand() % 5;
+		int x = rand() % 6;
 		if (x == 0) f->geraItem(pos.x - 50, pos.y - 20, "municaoskorpion");
 		else if (x == 1) f->geraItem(pos.x - 50, pos.y - 20, "medpack");
 		else if (x == 2) f->geraItem(pos.x - 50, pos.y - 20, "pistola");
 		else if (x == 3) f->geraItem(pos.x - 50, pos.y - 20, "municaomp5");
+		else if (x == 4) f->geraItem(pos.x - 50, pos.y - 20, "granada");
 	}
 	
 	if (i2 != "\n") f->geraItem(pos.x + 50, pos.y - 20, i2);
 
 	else {
-		x = rand() % 5;
+		x = rand() % 6;
 		if (x == 0) f->geraItem(pos.x + 50, pos.y - 20, "municaoskorpion");
 		else if (x == 1) f->geraItem(pos.x + 50, pos.y - 20, "medpack");
 		else if (x == 2) f->geraItem(pos.x + 50, pos.y - 20, "pistola");
 		else if (x == 3) f->geraItem(pos.x + 50, pos.y - 20, "municaomp5");
+        else if (x == 4) f->geraItem(pos.x - 50, pos.y - 20, "granada");
 	}
 	
 }

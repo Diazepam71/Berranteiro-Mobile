@@ -183,3 +183,64 @@ void TForm1::atualizaPontos() {
 	FDQuery1->ExecSQL();
 }
 
+void TForm1::verifResumir() {
+	if (fase1 == NULL && fase2 == NULL && fase3 == NULL) {
+		 Button6->TextSettings->FontColor = System::Uitypes::TAlphaColorRec::Gray;
+		 Button6->Enabled = false;
+	}
+	else {
+		Button6->TextSettings->FontColor = System::Uitypes::TAlphaColorRec::White;
+		Button6->Enabled = true;
+    }
+}
+
+void TForm1::atualizaTempo() {
+	clock_t total = 0;
+	if (fase1) total = clock() - fase1->getF1()->getTempoInicio();
+	else if (fase2) total = clock() - fase2->getF2()->getTempoInicio();
+	else if (fase3) total = clock() - fase3->getF3()->getTempoInicio();
+
+	total /= CLOCKS_PER_SEC;
+	System::UnicodeString ap1("");
+	System::UnicodeString ap2("");
+	System::UnicodeString ap3("");
+	int seg = total % 60;
+	if (seg < 10) ap3 = ap3 + System::UnicodeString("0");
+	int min = (total / 60) % 60;
+	if (min < 10) ap1 = ap1 + System::UnicodeString("0");
+	int hora = total / 3600;
+	if (hora < 10) ap2 = ap2 + System::UnicodeString("0");
+	System::UnicodeString tempo = ap2 + System::UnicodeString((int) hora) + System::UnicodeString(":") +
+	ap1 + System::UnicodeString((int) min) + System::UnicodeString(":") +
+	ap3 + System::UnicodeString((int) seg);
+	ShowMessage(tempo);
+
+
+    FDQuery1->Active = false;
+	FDQuery1->SQL->Clear();
+	if (fase1) FDQuery1->SQL->Text = "select Tempo_F1 as pontos from Ranking where Nome = '"+usuario+"';";
+	else if (fase2) FDQuery1->SQL->Text = "select Tempo_F2 as pontos from Ranking where Nome = '"+usuario+"';";
+	else if (fase3) FDQuery1->SQL->Text = "select Tempo_F3 as pontos from Ranking where Nome = '"+usuario+"';";
+	FDQuery1->Active = true;
+	ShowMessage("Query 1 Terminada.");
+
+	if (FDQuery1->FieldByName("pontos")->AsString <= tempo) return;
+
+
+
+	FDQuery1->Active = false;
+	FDQuery1->SQL->Clear();
+	if (fase1) FDQuery1->SQL->Text = "update Ranking set Tempo_F1 = '"+tempo+"' where Nome = '"+usuario+"';";
+	else if (fase2) FDQuery1->SQL->Text = "update Ranking set Tempo_F2 = '"+tempo+"' where Nome = '"+usuario+"';";
+	else if (fase3) FDQuery1->SQL->Text = "update Ranking set Tempo_F3 = '"+tempo+"' where Nome = '"+usuario+"';";
+	FDQuery1->ExecSQL();
+}
+
+void __fastcall TForm1::ajustar(TObject *Sender)
+{
+	desselecionarBotao(Button1);
+	desselecionarBotao(Button2);
+	desselecionarBotao(Button3);
+}
+//---------------------------------------------------------------------------
+

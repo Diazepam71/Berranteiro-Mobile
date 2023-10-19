@@ -26,6 +26,54 @@ object Form5: TForm5
     Position.Y = 248.000000000000000000
     TabOrder = 8
   end
+  object Timer1: TTimer
+    Left = 560
+    Top = 352
+  end
+  object SpeedButton2: TSpeedButton
+    Position.X = 272.000000000000000000
+    Position.Y = 304.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Fase 1'
+  end
+  object SpeedButton3: TSpeedButton
+    Position.X = 88.000000000000000000
+    Position.Y = 336.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Fase 1'
+  end
+  object SpeedButton1: TSpeedButton
+    Position.X = 32.000000000000000000
+    Position.Y = 200.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Fase 1'
+  end
+  object SpeedButton4: TSpeedButton
+    StyledSettings = [Family, Style]
+    Position.X = 104.000000000000000000
+    Position.Y = 304.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Fase 1'
+    TextSettings.Font.Size = 24.000000000000000000
+  end
+  object SpeedButton5: TSpeedButton
+    StyledSettings = [Family, Style]
+    Position.X = 112.000000000000000000
+    Position.Y = 312.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Fase 1'
+    TextSettings.Font.Size = 24.000000000000000000
+  end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'FMX'
     Left = 168
@@ -48,9 +96,5 @@ object Form5: TForm5
     Connection = FDConnection1
     Left = 72
     Top = 72
-  end
-  object Timer1: TTimer
-    Left = 560
-    Top = 352
   end
 end

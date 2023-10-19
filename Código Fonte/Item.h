@@ -16,7 +16,7 @@ public:
 	System::Classes::TComponent* owner);
 	~Item();
 	virtual void pegar();
-	void move();
+	virtual void move();
 	string getNome() { return nome; }
 	void setVidas(int n);
 	void setSound(System::UnicodeString s);

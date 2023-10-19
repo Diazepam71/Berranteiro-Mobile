@@ -54,6 +54,7 @@ ImpFase1::ImpFase1(Fmx::Types::TFmxObject* parent, System::Classes::TComponent* 
 
     ShowMessage((float) (clock() - timer + f) / CLOCKS_PER_SEC);
 	//f1->play();
+    inicio = clock();
 }
 
 ImpFase1::~ImpFase1(){
@@ -171,4 +172,5 @@ void ImpFase1::geraItens() {
     geraItem(4330, 820, "med");
     i = geraItem(300, 100, "porta");
 	static_cast <Porta*> (i)->setString("A1");
+    geraItem(4320, 800, "trigger_fase2");
 }

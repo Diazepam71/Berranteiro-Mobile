@@ -8,24 +8,55 @@ inherited Form5_LgXhdpiPh: TForm5_LgXhdpiPh
   DesignerMasterStyle = 3
   inherited ListView1: TListView
     Align = Left
-    Size.Width = 377.000000000000000000
+    Size.Width = 410.000000000000000000
     Size.Height = 425.000000000000000000
     Size.PlatformDefault = False
   end
   inherited ListView2: TListView
     Align = Right
-    Position.X = 376.000000000000000000
-    Size.Width = 344.000000000000000000
+    Position.X = 310.000000000000000000
+    Size.Width = 410.000000000000000000
     Size.Height = 425.000000000000000000
     Size.PlatformDefault = False
   end
-  inherited Timer1: TTimer [2]
+  inherited Timer1: TTimer
     Interval = 20
+    Left = 600
+    Top = 40
   end
-  inherited FDGUIxWaitCursor1: TFDGUIxWaitCursor [3]
+  inherited SpeedButton2: TSpeedButton
+    StyledSettings = [Family, Style]
+    Position.X = 336.000000000000000000
+    Text = 'Fase 2'
+    TextSettings.Font.Size = 24.000000000000000000
+    OnClick = mostra_f2
   end
-  inherited FDConnection1: TFDConnection [4]
+  inherited SpeedButton3: TSpeedButton
+    StyledSettings = [Family, Style]
+    Position.X = 560.000000000000000000
+    Position.Y = 304.000000000000000000
+    Text = 'Fase 3'
+    TextSettings.Font.Size = 24.000000000000000000
+    OnClick = mostra_f3
   end
-  inherited FDQuery1: TFDQuery [5]
+  inherited SpeedButton1: TSpeedButton
+    StyledSettings = [Family, Style]
+    Position.X = 104.000000000000000000
+    Position.Y = 304.000000000000000000
+    Size.Width = 137.000000000000000000
+    TextSettings.Font.Size = 24.000000000000000000
+    OnClick = mostra_f1
+  end
+  inherited SpeedButton4: TSpeedButton
+    Position.X = 216.000000000000000000
+    Position.Y = 248.000000000000000000
+    Text = 'Pontos'
+    OnClick = mostra_pontos
+  end
+  inherited SpeedButton5: TSpeedButton
+    Position.X = 440.000000000000000000
+    Position.Y = 248.000000000000000000
+    Text = 'Tempo'
+    OnClick = mostra_tempo
   end
 end

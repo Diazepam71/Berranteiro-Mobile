@@ -26,6 +26,7 @@ namespace Gerenciadores
 		void executar();
 		//void incluirJogador(Jogador *p);
 		void setInimigos (ListaEntes *l);
+        void trataExplosao(Entidade* expl);
 		//void setMapa (Mapa *m);
 		//Ente* hitscan(Jogador* j, Ente* e);
 	};

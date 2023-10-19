@@ -43,6 +43,8 @@ namespace Entidades
 				Projetil* getFogo();
 				void setItem(string s) { item = s; }
 				void setFase(Fase* f0) { f = f0; }
+				void setAtirar(bool b) {atirar = b;};
+                void setClockProj(clock_t t) {proj = t;};
 				
 		};
 

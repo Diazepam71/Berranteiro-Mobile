@@ -1,5 +1,6 @@
 #include "Curupira.h"
 #include "Chave.h"
+#include "TriggerFase.h"
 
 using namespace Entidades;
 using namespace Personagens;
@@ -61,7 +62,11 @@ void Curupira::ataqueEsq()
 
 void Curupira::move()
 {
-	if ((clock() - proj) /CLOCKS_PER_SEC > 6) fogo->setVidas(3);
+	if ((float)(clock() - proj) / (float) CLOCKS_PER_SEC > 6.0) {
+		 fogo->setVidas(3);
+		 atirar = true;
+         //proj = clock();
+	}
 	if (pos.x > 1500 || pos.X < -300 || pos.y < -300 || pos.y > 1000) {
 		congela();
 	}
@@ -123,7 +128,11 @@ void Curupira::ataque(TPointF posiJogador)
         else if((posiJogador.x - pos.x)>0) 
         { 
             fogo->setDireita(true);
-        }
+		}
+        ressucitar = false;
+
+		calculaRessucitar();
+		if(ressucitar == true) { ressucitarAnimais(); }
 	}
     else
     {
@@ -131,10 +140,7 @@ void Curupira::ataque(TPointF posiJogador)
     }
 
 	atirar = false;
-	ressucitar = false;
 
-	calculaRessucitar();
-	if(ressucitar == true) { ressucitarAnimais(); }
 
 	//float dt = relogio.getElapsedTime().asSeconds();
 		if((clock() - relogio) / CLOCKS_PER_SEC >=3)
@@ -170,17 +176,16 @@ void Curupira::calculaRessucitar()
 
 void Curupira::ressucitarAnimais()
 {
-	Lista<Entidade>::Elemento<Entidade> *aux;
-	Entidade *tipo;
-	aux = animais->getLista()->getPrimeiro();
-	
-	while(aux->getProximo()->getProximo()!=NULL)
-	{
-		tipo = aux->getInfo();
-		tipo->setVidas(10);
-		aux = aux->getProximo();
-	}
+	srand(time(NULL));
+	int x = (rand() % 3) + 2;
 
+	for (int i = 1; i <= x; i-=-1) {
+		int esc = rand() % 2;
+		int dpos = (rand() % 300) - 150;
+		int ypos = (rand() % 150);
+		if (esc == 0) f->geraArara(pos.x + dpos, pos.y - ypos);
+		else f->geraOnca(pos.X + dpos, pos.y - ypos);
+    }
 }
 
 void Curupira::setLista(ListaEntes *l)
@@ -197,10 +202,12 @@ void Curupira::setVidas(int x) {
 	numVidas = x;
 	if (x <= 0) {
 		Item* i = f->geraItem(pos.x, pos.y, item);
-		static_cast <Chave*> (i)->setFase(f);
+		if (item.operator[](0) == 'c' && item.operator[](1) == 'h')  static_cast <Chave*> (i)->setFase(f);
+		else if (item.operator[](0) == 't' && item.operator[](1) == 'r') static_cast <TriggerFase*> (i)->setFAtual(f);
 		vivo = false;
 		corpo->Width = 0;
-        corpo->Height = 0;
+		corpo->Height = 0;
+        jogador1->setPontos(jogador1->getPontos() + 950);
 	}
 	else vivo = true;
 }

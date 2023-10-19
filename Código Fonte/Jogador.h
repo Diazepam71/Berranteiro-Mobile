@@ -43,6 +43,7 @@ namespace Entidades
 			void colisaoInimigo(Entidade *i);
 			int colisaoMapaObs(Entidade *hbx);
 			int getPontos();
+            void setPontos(int x) {pontos = x;};
 			void setArmaSel(int x);
 			int getArmaSel();
 			Lista<Arma>* getl_arma();
@@ -54,6 +55,7 @@ namespace Entidades
 			void setAtirando(int x) { atirando = x; };
 			bool getAtirando() { return atirando; };
 			Lista<string>* getItens() { return itens; };
+            bool verifPular();
 		};
 	}
 }

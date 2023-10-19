@@ -24,9 +24,9 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 	f1 = new ImpFase2(this, this);
 	f1->getLista()->reposLista(-4000, -600);
     f1->getMapa2()->reposMapa(-4000, -600);
-	ShowMessage("ImpFase1: ");
-	ShowMessage((float) (clock() - timer1) / CLOCKS_PER_SEC);
-	ShowMessage("Resto: ");
+	//ShowMessage("ImpFase1: ");
+	//ShowMessage((float) (clock() - timer1) / CLOCKS_PER_SEC);
+	//ShowMessage("Resto: ");
 	clock_t timer2 = clock();
 	f1->getJogador()->setOwner(this);
 	f1->setJogador1(f1->getJogador());
@@ -40,7 +40,7 @@ __fastcall TForm3::TForm3(TComponent* Owner)
     Button8->BringToFront();
 	//dynamic_cast <TForm*> (Owner)->Hide();
 	//this->Show();
-	ShowMessage((float) (clock() - timer2) / CLOCKS_PER_SEC);
+	//ShowMessage((float) (clock() - timer2) / CLOCKS_PER_SEC);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm3::soltar_arma(TObject *Sender)
@@ -92,7 +92,7 @@ void __fastcall TForm3::trocar_arma(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm3::pular(TObject *Sender)
 {
-	f1->getJogador()->setVelY(-10);
+	if (f1->getJogador()->verifPular() == true) f1->getJogador()->setVelY(-10);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm3::esquerda(TObject *Sender)
@@ -160,6 +160,7 @@ void __fastcall TForm3::teclaApertada(TObject *Sender, WORD &Key, System::WideCh
 		dynamic_cast <TForm*> (this->Owner)->Show();
 		this->Hide();
 		dynamic_cast <TForm1*> (this->Owner)->atualizaPontos();
+        dynamic_cast <TForm1*> (this->Owner)->verifResumir();
 	}
 }
 //---------------------------------------------------------------------------

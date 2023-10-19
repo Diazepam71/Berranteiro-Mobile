@@ -60,7 +60,7 @@ void __fastcall TForm7::cadastrar(TObject *Sender)
 	}
     FDQuery1->Active = false;
 	FDQuery1->SQL->Clear();
-	FDQuery1->SQL->Text = "insert into ranking values('"+Edit1->Text+"', '"+Edit2->Text+"', '0', '0', '0');";
+	FDQuery1->SQL->Text = "insert into ranking values('"+Edit1->Text+"', '"+Edit2->Text+"', '0', '0', '0', '99:59:59', '99:59:59', '99:59:59');";
 	FDQuery1->ExecSQL();
 	if (Menu == NULL) Menu = new TForm1(this);
 	Menu->Show();
