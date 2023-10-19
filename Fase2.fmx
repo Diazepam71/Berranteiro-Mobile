@@ -1,0 +1,136 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  FullScreen = True
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    StyledSettings = []
+    Position.X = 24.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'speedbuttonstyle'
+    TabOrder = 10
+    Text = 'Esquerda'
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+  end
+  object Button2: TButton
+    StyledSettings = []
+    Position.X = 164.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'speedbuttonstyle'
+    TabOrder = 8
+    Text = 'Direita'
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+  end
+  object Button3: TButton
+    StyledSettings = []
+    Position.X = 88.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'speedbuttonstyle'
+    TabOrder = 0
+    Text = 'Pular'
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+  end
+  object Button5: TButton
+    StyledSettings = []
+    Position.X = 20.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 149.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'speedbuttonstyle'
+    TabOrder = 4
+    Text = 'Trocar Arma'
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+  end
+  object Button8: TButton
+    StyledSettings = []
+    Position.X = 20.000000000000000000
+    Position.Y = 104.000000000000000000
+    Size.Width = 149.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'speedbuttonstyle'
+    TabOrder = 1
+    Text = 'Soltar Arma'
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+  end
+  object Button4: TButton
+    StyledSettings = [Family, Size, Style]
+    Position.X = 376.000000000000000000
+    Position.Y = 96.000000000000000000
+    TabOrder = 9
+    Text = 'Quadro'
+    TextSettings.FontColor = claWhite
+    Visible = False
+  end
+  object Timer2: TTimer
+    Interval = 5000
+    Left = 288
+    Top = 88
+  end
+  object Button6: TButton
+    StyledSettings = []
+    Position.X = 527.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'speedbuttonstyle'
+    TabOrder = 5
+    Text = 'Atacar'
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+  end
+  object Button7: TButton
+    StyledSettings = []
+    Position.X = 468.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 133.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'speedbuttonstyle'
+    TabOrder = 3
+    Text = 'Recarregar'
+    TextSettings.Font.Family = 'Unispace'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claWhite
+  end
+  object Timer1: TTimer
+    Interval = 17
+    Left = 128
+    Top = 24
+  end
+end

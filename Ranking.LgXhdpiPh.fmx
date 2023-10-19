@@ -1,0 +1,62 @@
+inherited Form5_LgXhdpiPh: TForm5_LgXhdpiPh
+  ClientHeight = 425
+  ClientWidth = 720
+  Fill.Color = claBlack
+  Fill.Kind = Solid
+  OnCreate = msg
+  OnKeyDown = teclaApertada
+  DesignerMasterStyle = 3
+  inherited ListView1: TListView
+    Align = Left
+    Size.Width = 410.000000000000000000
+    Size.Height = 425.000000000000000000
+    Size.PlatformDefault = False
+  end
+  inherited ListView2: TListView
+    Align = Right
+    Position.X = 310.000000000000000000
+    Size.Width = 410.000000000000000000
+    Size.Height = 425.000000000000000000
+    Size.PlatformDefault = False
+  end
+  inherited Timer1: TTimer
+    Interval = 20
+    Left = 600
+    Top = 40
+  end
+  inherited SpeedButton2: TSpeedButton
+    StyledSettings = [Family, Style]
+    Position.X = 336.000000000000000000
+    Text = 'Fase 2'
+    TextSettings.Font.Size = 24.000000000000000000
+    OnClick = mostra_f2
+  end
+  inherited SpeedButton3: TSpeedButton
+    StyledSettings = [Family, Style]
+    Position.X = 560.000000000000000000
+    Position.Y = 304.000000000000000000
+    Text = 'Fase 3'
+    TextSettings.Font.Size = 24.000000000000000000
+    OnClick = mostra_f3
+  end
+  inherited SpeedButton1: TSpeedButton
+    StyledSettings = [Family, Style]
+    Position.X = 104.000000000000000000
+    Position.Y = 304.000000000000000000
+    Size.Width = 137.000000000000000000
+    TextSettings.Font.Size = 24.000000000000000000
+    OnClick = mostra_f1
+  end
+  inherited SpeedButton4: TSpeedButton
+    Position.X = 216.000000000000000000
+    Position.Y = 248.000000000000000000
+    Text = 'Pontos'
+    OnClick = mostra_pontos
+  end
+  inherited SpeedButton5: TSpeedButton
+    Position.X = 440.000000000000000000
+    Position.Y = 248.000000000000000000
+    Text = 'Tempo'
+    OnClick = mostra_tempo
+  end
+end

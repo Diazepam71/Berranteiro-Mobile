@@ -1,0 +1,79 @@
+inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
+  BorderStyle = None
+  ClientHeight = 720
+  ClientWidth = 450
+  Fill.Kind = Bitmap
+  OnKeyDown = teclaApertada
+  DesignerMasterStyle = 3
+  inherited Button1: TButton
+    Position.X = 24.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 113.000000000000000000
+    Text = 'Esquerda'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = esquerda
+    OnEnter = esquerda2
+  end
+  inherited Button2: TButton
+    Position.X = 164.000000000000000000
+    Position.Y = 320.000000000000000000
+    Text = 'Direita'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = direita
+    OnEnter = direita2
+  end
+  inherited Button3: TButton
+    Position.X = 88.000000000000000000
+    Position.Y = 264.000000000000000000
+    Text = 'Pular'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = pular
+  end
+  inherited Button4: TButton
+    StyledSettings = [Family, Size, Style]
+    Text = 'Quadro'
+    TextSettings.FontColor = claWhite
+    Visible = False
+    OnClick = quadro
+  end
+  inherited Timer1: TTimer
+    Interval = 15
+    OnTimer = loop
+    Left = 128
+    Top = 24
+  end
+  inherited Timer2: TTimer
+    Interval = 5000
+    OnTimer = alert
+  end
+  inherited Button5: TButton
+    Position.X = 20.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 149.000000000000000000
+    Text = 'Trocar Arma'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = trocar_arma
+  end
+  inherited Button6: TButton
+    Position.X = 604.000000000000000000
+    Position.Y = 320.000000000000000000
+    Text = 'Atacar'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = atacar2
+    OnEnter = atacar
+  end
+  inherited Button7: TButton
+    Position.X = 468.000000000000000000
+    Size.Width = 133.000000000000000000
+    Text = 'Recarregar'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = recarregar
+  end
+  inherited Button8: TButton
+    Position.Y = 104.000000000000000000
+    Text = 'Soltar Arma'
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    OnClick = soltar_arma
+  end
+end
