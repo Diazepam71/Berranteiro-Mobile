@@ -4,6 +4,7 @@
 #define TriggerFaseH
 #include "Item.h"
 #include "Fase.h"
+#include "Construtor.h"
 using namespace Fases;
 
 class TriggerFase : public Item {
@@ -11,6 +12,7 @@ private:
 	Fase* fAtual;
 	int fNova;
 	System::Classes::TComponent* Owner;
+    Construtor* construtor;
 
 public:
 	TriggerFase(int fase, Jogador* jo, float x, float y,
@@ -20,7 +22,8 @@ public:
 	void setFaseNova(int nova);
 	void pegar();
 	void setWidth(float f);
-    void setHeight(float f);
+	void setHeight(float f);
+    void setVidas(int n) {};
 };
 //---------------------------------------------------------------------------
 #endif

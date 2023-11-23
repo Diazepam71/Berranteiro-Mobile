@@ -3,7 +3,6 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
   ClientWidth = 450
   Fill.Kind = Bitmap
   FullScreen = True
-  OnShow = ajustar
   DesignerMasterStyle = 3
   inherited Button1: TButton
     StyledSettings = []
@@ -81,6 +80,10 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.FontColor = claGray
     OnClick = resumir
+  end
+  inherited Timer1: TTimer
+    Interval = 300
+    OnTimer = verif_fase_construida
   end
   inherited FDConnection1: TFDConnection
     Left = 104

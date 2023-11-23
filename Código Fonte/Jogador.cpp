@@ -2,6 +2,7 @@
 #include "Inimigo.h"
 #include "Obstaculo.h"
 #include "Projetil.h"
+#include "Menu.h"
 #include <iostream>
 #include <cmath>
 #include <System.Ioutils.hpp>
@@ -163,8 +164,8 @@ void Jogador::colisaoInimigo(Entidade *i)
 		}
 		else if(i->getAtacar()==true)
 		{
-			if (i->getProjetil() == true) numVidas -= static_cast <Projetil*> (i)->getDano();
-			else numVidas -= static_cast <Inimigo*> (i)->getDano();
+			if (i->getProjetil() == true) setVidas(numVidas - static_cast <Projetil*> (i)->getDano());
+			else setVidas(numVidas - static_cast <Inimigo*> (i)->getDano());
 		}
 		verifTempo = false;
 	}
@@ -281,7 +282,7 @@ void Jogador::atirar() {
 		return;
 	}
 	//std::cout << t1 / (float) CLOCKS_PER_SEC << " - " << x->getClock() / (float) CLOCKS_PER_SEC << " = " << t1 / (float) CLOCKS_PER_SEC - x->getClock() / (float) CLOCKS_PER_SEC << "\n";
-	x->setClock(t1);
+	if (x->getNome() != "granada") x->setClock(t1);
 	if (x->getSom()->State == TMediaState::Playing) x->getSom()->CurrentTime = 0;
 	x->getSom()->Play();
     if (x->getNome() == "granada") return;
@@ -324,4 +325,18 @@ void Jogador::atirar() {
 bool Jogador::verifPular() {
 	if (vely >= -0.3 && vely <= 0.3) return true;
 	return false;
+}
+
+void Jogador::setVidas(int n) {
+	if (numVidas > 0 && n <= 0 && vivo == true) {
+		numVidas = n;
+		vivo = false;
+		corpo->Width = 0;
+		corpo->Height = 0;
+		ShowMessage("Morreu!");
+		dynamic_cast <TForm*> (Owner->Owner)->Show();
+		dynamic_cast <TForm1*> (Owner->Owner)->atualizaPontos();
+		delete Owner;
+    }
+    numVidas = n;
 }

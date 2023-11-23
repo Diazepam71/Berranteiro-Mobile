@@ -21,7 +21,7 @@ TForm4 *Form4;
 __fastcall TForm4::TForm4(TComponent* Owner)
 	: TForm(Owner)
 {
-    clock_t timer1 = clock();
+	/*clock_t timer1 = clock();
 	f1 = new ImpFase3(this, this);
 	//f1->getLista()->reposLista(-4000, -600);
     //f1->getMapa2()->reposMapa(-4000, -600);
@@ -31,7 +31,7 @@ __fastcall TForm4::TForm4(TComponent* Owner)
 	clock_t timer2 = clock();
 	f1->getJogador()->setOwner(this);
 	f1->setJogador1(f1->getJogador());
-	f1->getInterface()->emergencia(dynamic_cast <TForm1*> (Owner)->Label1->StyledSettings);
+	f1->getInterface()->emergencia(dynamic_cast <TForm1*> (Owner)->Label1->StyledSettings);*/
 	Button1->BringToFront();
 	Button2->BringToFront();
 	Button3->BringToFront();
@@ -42,6 +42,21 @@ __fastcall TForm4::TForm4(TComponent* Owner)
 	//dynamic_cast <TForm*> (Owner)->Hide();
 	//this->Show();
 	//ShowMessage((float) (clock() - timer2) / CLOCKS_PER_SEC);
+}
+
+void TForm4::setF3(ImpFase3* f03) {
+	f1 = f03;
+    f1->getJogador()->setOwner(this);
+	f1->setJogador1(f1->getJogador());
+	f1->getInterface()->emergencia(dynamic_cast <TForm1*> (Owner)->Label1->StyledSettings);
+    Button1->BringToFront();
+	Button2->BringToFront();
+	Button3->BringToFront();
+	Button5->BringToFront();
+	Button6->BringToFront();
+	Button7->BringToFront();
+	Button8->BringToFront();
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm4::soltar_arma(TObject *Sender)
@@ -76,7 +91,10 @@ void __fastcall TForm4::soltar_arma(TObject *Sender)
         else if (s == "pistola") {
             static_cast <Pistola*> (i)->setammo(x->getAmmo());
             static_cast <Pistola*> (i)->setmagvar(x->getMagvar());
-        }
+		}
+		else if (s == "granada") {
+			static_cast <Granada*> (i)->setQtd(x->getAmmo());
+		}
 	}
 }
 //---------------------------------------------------------------------------
@@ -139,7 +157,12 @@ void __fastcall TForm4::atacar(TObject *Sender)
 	Jogador* j = f1->getJogador();
 	if (j->getl_arma()->getElX(j->getArmaSel())->getInfo()->getNome() == "granada") {
 		Arma* x = j->getl_arma()->getElX(j->getArmaSel())->getInfo();
-		//if ((((float) x->getClock() - clock()) / CLOCKS_PER_SEC) < x->getCad()) return;
+		if ((((float) (clock() - x->getClock())) / CLOCKS_PER_SEC) < x->getCad()) {
+			//ShowMessage((float) clock());
+			//ShowMessage((float) x->getClock());
+            //ShowMessage((float) (clock() - x->getClock()) / (float) CLOCKS_PER_SEC);
+			return;
+		}
 		x->setClock(clock());
 		if (x->getAmmo() <= 0) return;
 		Item* i = f1->geraItem(j->getPos().x, j->getPos().y, "granada");
@@ -183,4 +206,7 @@ void __fastcall TForm4::teclaApertada(TObject *Sender, WORD &Key, System::WideCh
 	}
 }
 //---------------------------------------------------------------------------
+void TForm4::setTimer(bool b) {
+    Timer1->Enabled = b;
+}
 

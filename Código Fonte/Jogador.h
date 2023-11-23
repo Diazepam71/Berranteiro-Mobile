@@ -55,7 +55,8 @@ namespace Entidades
 			void setAtirando(int x) { atirando = x; };
 			bool getAtirando() { return atirando; };
 			Lista<string>* getItens() { return itens; };
-            bool verifPular();
+			bool verifPular();
+            void setVidas(int n);
 		};
 	}
 }

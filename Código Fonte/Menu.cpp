@@ -22,6 +22,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 		(), "Ranking.db");
 	FDConnection1->Params->Database = System::Ioutils::TPath::Combine(System::Ioutils::TPath::GetDocumentsPath
 		(), L"Ranking.db");
+	construtor = new Construtor(1);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::selecionarBotao(TObject *Sender)
@@ -34,7 +35,7 @@ void __fastcall TForm1::desselecionarBotao(TObject *Sender)
 	dynamic_cast <TButton*> (Sender)->FontColor = TAlphaColor(TAlphaColorRec::White);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::executarFase1(TObject *Sender)
+void __fastcall TForm1::executarFase1(TObject* Sender)
 {
 	clock_t timer = clock();
 	//Button1->Visible = false;
@@ -48,12 +49,52 @@ void __fastcall TForm1::executarFase1(TObject *Sender)
 		delete fase3;
 		fase3 = NULL;
 	}
-	fase1 = new TForm2(this);
+    if (construtor->getExecutando() == 3) {
+			fase1->setF1(construtor->getFase1());
+            fase1->setTimer(1);
+			this->Hide();
+			fase1->Show();
+			Timer1->Enabled = false;
+			construtor->setExecutando(0);
+			return;
+	}
+	else if (construtor->getExecutando() == 0) {
+    		delete construtor;
+			construtor = new Construtor(1);
+			Label1->Visible = false;
+			Button1->Visible = false;
+			Button2->Visible = false;
+			Button3->Visible = false;
+			Button4->Visible = false;
+			Button5->Visible = false;
+			Button6->Visible = false;
+			Label2->Visible = true;
+			fase1 = new TForm2(this);
+			fase1->setTimer(0);
+			construtor->setNum(1);
+			construtor->setOwner(fase1);
+			construtor->setParent(fase1);
+			construtor->Start();
+	}
+	else {
+		ShowMessage("Carregando fase. Aguarde.");
+	}
+
+	/*System::Classes::TComponent* o = this;
+	String timeStarted = DateTimeToStr(Now());
+	TThread::CreateAnonymousThread(
+		  [timeStarted]() {
+		   fase1 = new TForm2(o); // Some lengthy work done in worker thread
+		   TThread::Synchronize(nullptr, _di_TThreadProcedure([timeStarted] {
+				 ShowMessage(String("DONE: Job started @ ")+timeStarted);
+		   }));
+		  })->Start(); */
+
 	//Label2->Visible = false;
-	fase1->Show();
-	Hide();
-	ShowMessage("Total: ");
-	ShowMessage((float) (clock() - timer) /CLOCKS_PER_SEC);
+	//fase1->Show();
+	//Hide();
+	//ShowMessage("Total: ");
+	//ShowMessage((float) (clock() - timer) /CLOCKS_PER_SEC);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::executarFase2(TObject *Sender)
@@ -70,12 +111,42 @@ void __fastcall TForm1::executarFase2(TObject *Sender)
 		delete fase3;
 		fase3 = NULL;
 	}
-	fase2 = new TForm3(this);
+     if (construtor->getExecutando() == 3) {
+			fase2->setF2(construtor->getFase2());
+			fase2->setTimer(1);
+			this->Hide();
+			fase2->Show();
+			Timer1->Enabled = false;
+			construtor->setExecutando(0);
+			return;
+	}
+	else if (construtor->getExecutando() == 0) {
+    		delete construtor;
+			construtor = new Construtor(1);
+			Label1->Visible = false;
+			Button1->Visible = false;
+			Button2->Visible = false;
+			Button3->Visible = false;
+			Button4->Visible = false;
+			Button5->Visible = false;
+			Button6->Visible = false;
+			Label2->Visible = true;
+			fase2 = new TForm3(this);
+			fase2->setTimer(0);
+			construtor->setNum(2);
+			construtor->setOwner(fase2);
+			construtor->setParent(fase2);
+			construtor->Start();
+	}
+	else {
+		ShowMessage("Carregando fase. Aguarde.");
+	}
+	//fase2 = new TForm3(this);
 	//Label2->Visible = false;
-	fase2->Show();
-	Hide();
-	ShowMessage("Total: ");
-	ShowMessage((float) (clock() - timer) /CLOCKS_PER_SEC);
+	//fase2->Show();
+	//Hide();
+	//ShowMessage("Total: ");
+	//ShowMessage((float) (clock() - timer) /CLOCKS_PER_SEC);
 }
 //---------------------------------------------------------------------------
 
@@ -93,12 +164,42 @@ void __fastcall TForm1::executarFase3(TObject *Sender)
 		delete fase2;
 		fase2 = NULL;
 	}
-	fase3 = new TForm4(this);
+     if (construtor->getExecutando() == 3) {
+			fase3->setF3(construtor->getFase3());
+			fase3->setTimer(1);
+			this->Hide();
+			fase3->Show();
+			Timer1->Enabled = false;
+            construtor->setExecutando(0);
+			return;
+	}
+	else if (construtor->getExecutando() == 0) {
+    		delete construtor;
+			construtor = new Construtor(1);
+			Label1->Visible = false;
+			Button1->Visible = false;
+			Button2->Visible = false;
+			Button3->Visible = false;
+			Button4->Visible = false;
+			Button5->Visible = false;
+			Button6->Visible = false;
+			Label2->Visible = true;
+			fase3 = new TForm4(this);
+			fase3->setTimer(0);
+			construtor->setNum(3);
+			construtor->setOwner(fase3);
+			construtor->setParent(fase3);
+			construtor->Start();
+	}
+	else {
+		ShowMessage("Carregando fase. Aguarde.");
+	}
+	//fase3 = new TForm4(this);
 	//Label2->Visible = false;
-	fase3->Show();
-	Hide();
-	ShowMessage("Total: ");
-	ShowMessage((float) (clock() - timer) /CLOCKS_PER_SEC);
+	//fase3->Show();
+	//Hide();
+	//ShowMessage("Total: ");
+	//ShowMessage((float) (clock() - timer) /CLOCKS_PER_SEC);
 }
 //---------------------------------------------------------------------------
 
@@ -171,6 +272,13 @@ void TForm1::atualizaPontos() {
 	else if (fase3) FDQuery1->SQL->Text = "select Pontos_F3 as pontos from Ranking where Nome = '"+usuario+"';";
 	FDQuery1->Active = true;
 
+	if (FDQuery1->IsEmpty()) {
+		ShowMessage("Nome nao encontrado.");
+		return;
+	}
+
+	//ShowMessage("Parte 1 concluida");
+
 	if (FDQuery1->FieldByName("pontos")->AsInteger >= total) return;
 
 
@@ -180,6 +288,7 @@ void TForm1::atualizaPontos() {
 	if (fase1) FDQuery1->SQL->Text = "update Ranking set Pontos_F1 = "+System::UnicodeString((int) fase1->getF1()->getJogador()->getPontos())+" where Nome = '"+usuario+"';";
 	else if (fase2) FDQuery1->SQL->Text = "update Ranking set Pontos_F2 = "+System::UnicodeString((int) fase2->getF2()->getJogador()->getPontos())+" where Nome = '"+usuario+"';";
 	else if (fase3) FDQuery1->SQL->Text = "update Ranking set Pontos_F3 = "+System::UnicodeString((int) fase3->getF3()->getJogador()->getPontos())+" where Nome = '"+usuario+"';";
+    //ShowMessage("Parte 2 a ser executada...");
 	FDQuery1->ExecSQL();
 }
 
@@ -222,7 +331,7 @@ void TForm1::atualizaTempo() {
 	else if (fase2) FDQuery1->SQL->Text = "select Tempo_F2 as pontos from Ranking where Nome = '"+usuario+"';";
 	else if (fase3) FDQuery1->SQL->Text = "select Tempo_F3 as pontos from Ranking where Nome = '"+usuario+"';";
 	FDQuery1->Active = true;
-	ShowMessage("Query 1 Terminada.");
+	//ShowMessage("Query 1 Terminada.");
 
 	if (FDQuery1->FieldByName("pontos")->AsString <= tempo) return;
 
@@ -238,9 +347,35 @@ void TForm1::atualizaTempo() {
 
 void __fastcall TForm1::ajustar(TObject *Sender)
 {
+	construtor->setExecutando(0);
+    Timer1->Enabled = true;
 	desselecionarBotao(Button1);
 	desselecionarBotao(Button2);
 	desselecionarBotao(Button3);
+	Label2->Visible = false;
+    mostrarItens();
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForm1::verif_fase_construida(TObject *Sender)
+{
+	if (construtor->getExecutando() == 3) {
+		if (construtor->getNum() == 1) executarFase1(Button1);
+		else if (construtor->getNum() == 2) executarFase2(Button2);
+		else if (construtor->getNum() == 3) executarFase3(Button3);
+    }
+}
+//---------------------------------------------------------------------------
+
+void TForm1::ShowCarregando() {
+	Show();
+    Label1->Visible = false;
+	Button1->Visible = false;
+	Button2->Visible = false;
+	Button3->Visible = false;
+	Button4->Visible = false;
+	Button5->Visible = false;
+	Button6->Visible = false;
+	Label2->Visible = true;
+}
 

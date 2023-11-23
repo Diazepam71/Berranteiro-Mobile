@@ -199,8 +199,8 @@ Projetil* Curupira::getFogo()
 }
 
 void Curupira::setVidas(int x) {
-	numVidas = x;
-	if (x <= 0) {
+
+	if (x <= 0 && numVidas > 0 && vivo == true) {
 		Item* i = f->geraItem(pos.x, pos.y, item);
 		if (item.operator[](0) == 'c' && item.operator[](1) == 'h')  static_cast <Chave*> (i)->setFase(f);
 		else if (item.operator[](0) == 't' && item.operator[](1) == 'r') static_cast <TriggerFase*> (i)->setFAtual(f);
@@ -209,6 +209,6 @@ void Curupira::setVidas(int x) {
 		corpo->Height = 0;
         jogador1->setPontos(jogador1->getPontos() + 950);
 	}
-	else vivo = true;
+	numVidas = x;
 }
 	

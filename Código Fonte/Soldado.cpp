@@ -5,6 +5,7 @@
 #include "MunicaoMP5.h"
 #include "MunicaoSkorpion.h"
 #include "Chave.h"
+#include "Granada.h"
 using namespace Itens;
 using namespace Entidades;
 using namespace Personagens;
@@ -203,8 +204,8 @@ void Soldado::ataque(TPointF posiJogador)
 	
 }
 void Soldado::setVidas(int n) {
-	numVidas = n;
-	if (numVidas <= 0) {
+
+	if (numVidas > 0 && n <= 0 && vivo == true) {
 		vivo = false;
         Item* i = f->geraItem(pos.x, pos.y, item);
 		if (item.operator[](0) == 'c' && item.operator[](1) == 'h')  static_cast <Chave*> (i)->setFase(f);
@@ -213,8 +214,11 @@ void Soldado::setVidas(int n) {
         corpo->Width = 0;
 		corpo->Height = 0;
 		jogador1->setPontos(jogador1->getPontos() + 150);
-		int z = rand() % 2;
-		if (z == 1) f->geraItem(pos.X + 30, pos.Y + 30, "granada");
+		int z = rand() % 3;
+		if (z != 0) {
+			Item* ii = f->geraItem(pos.X + 30, pos.Y + 30, "granada");
+			static_cast <Granada*> (ii)->setQtd(z);
+		}
 		if (x != 1) return;
 		if (skin == 1) {
 			Item* i = f->geraItem(pos.x, pos.y, "municaomp5");
@@ -227,4 +231,5 @@ void Soldado::setVidas(int n) {
 			static_cast <MunicaoSkorpion*> (i)->setValor(25 + y);
 		}
 	}
+	numVidas = n;
 }

@@ -40,7 +40,7 @@ ImpFase3::ImpFase3(Fmx::Types::TFmxObject* parent, System::Classes::TComponent* 
 	float f = (clock() - timer) / CLOCKS_PER_SEC;
 	Mapa* mapa = new Mapa(TPointF(0, 0), TPointF(9600, 2048), imagem, parent);
 	mapa2 = mapa;
-	ShowMessage((float)(clock() - timer) / CLOCKS_PER_SEC);
+	//ShowMessage((float)(clock() - timer) / CLOCKS_PER_SEC);
 	timer = clock();
 
 	j1 = new Jogador(parent);
@@ -57,7 +57,7 @@ ImpFase3::ImpFase3(Fmx::Types::TFmxObject* parent, System::Classes::TComponent* 
 	pColi = new GerenciadorColisao(inimigos, j1, mapa2);
 	interf = new Interface(parent);
 
-    ShowMessage((float) (clock() - timer + f) / CLOCKS_PER_SEC);
+    //ShowMessage((float) (clock() - timer + f) / CLOCKS_PER_SEC);
 	//f1->play();
     inicio = clock();
 }
@@ -108,7 +108,7 @@ void ImpFase3::geraInimigos()
     geraSoldado(125 * 32, 8 * 32, 2);
 	geraOnca(113 * 32, 22 * 32);
 	geraSoldado(163 * 32, 42 * 32, 1);
-	geraSoldado(165 * 32, 42 * 32, 2);
+	//geraSoldado(165 * 32, 42 * 32, 2);
 	geraSoldado(168 * 32, 42 * 32, 1);
 	geraSoldado(205 * 32, 34 * 32, 1);
 	geraSoldado(183 * 32, 31 * 32, 2);
@@ -245,6 +245,14 @@ void ImpFase3::geraItens() {
 	static_cast <Porta*> (i)->setString("A5");
 	geraItem(173 * 32, 56 * 32, "trigger_fase0");
 	geraItem(178 * 32, 25 * 32, "chave-B3");
+	i = geraItem(5800, 1400, "medpack");
+	static_cast <Medpack*> (i)->setValor(25);
+	i = geraItem(2770 * 2, 410 * 2, "medpack");
+	static_cast <Medpack*> (i)->setValor(20);
+	i = geraItem(2860 * 2, 510 * 2, "medpack");
+	static_cast <Medpack*> (i)->setValor(25);
+	i = geraItem(3375 * 2, 655 * 2, "medpack");
+	static_cast <Medpack*> (i)->setValor(20);
 }
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

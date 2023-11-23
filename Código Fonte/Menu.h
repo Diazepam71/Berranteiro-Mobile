@@ -36,6 +36,7 @@
 #include <FireDAC.Stan.Pool.hpp>
 #include <FireDAC.UI.Intf.hpp>
 #include <FireDAC.Comp.UI.hpp>
+#include "Construtor.h"
 #include <string>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -52,22 +53,25 @@ __published:	// IDE-managed Components
 	TFDConnection *FDConnection1;
 	TFDQuery *FDQuery1;
 	TFDGUIxWaitCursor *FDGUIxWaitCursor1;
+	TTimer *Timer1;
 	void __fastcall selecionarBotao(TObject *Sender);
 	void __fastcall desselecionarBotao(TObject *Sender);
-	void __fastcall executarFase1(TObject *Sender);
+	void __fastcall executarFase1(TObject* Sender);
 	void __fastcall executarFase2(TObject *Sender);
 	void __fastcall executarFase3(TObject *Sender);
 	void __fastcall executarRanking(TObject *Sender);
 	void __fastcall login(TObject *Sender);
 	void __fastcall resumir(TObject *Sender);
 	void __fastcall ajustar(TObject *Sender);
+	void __fastcall verif_fase_construida(TObject *Sender);
 	//TForm2* fase1;
 private:	// User declarations
 	 TForm2* fase1;
 	 TForm3* fase2;
 	 TForm4* fase3;
 	 TForm5* ranking;
-     TForm6* teste;
+	 TForm6* teste;
+     Construtor* construtor;
 public:		//User declarations
 	__fastcall TForm1(TComponent* Owner);
 	void mostrarItens();
@@ -78,7 +82,11 @@ public:		//User declarations
 	void setF1(TForm2* f) {fase1 = f;};
 	void setF2(TForm3* f) {fase2 = f;};
 	void setF3(TForm4* f) {fase3 = f;};
-    void atualizaTempo();
+	TForm2* getF1() {return fase1;};
+	TForm3* getF2() {return fase2;};
+	TForm4* getF3() {return fase3;};
+	void atualizaTempo();
+    void ShowCarregando();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

@@ -35,7 +35,7 @@ ImpFase2::ImpFase2(Fmx::Types::TFmxObject* parent, System::Classes::TComponent* 
 	float f = (clock() - timer) / CLOCKS_PER_SEC;
 	Mapa* mapa = new Mapa(TPointF(4192, 32), TPointF(12768, 1792), imagem, parent);
 	mapa2 = mapa;
-	ShowMessage((float)(clock() - timer) / CLOCKS_PER_SEC);
+	//ShowMessage((float)(clock() - timer) / CLOCKS_PER_SEC);
 	timer = clock();
 
 	j1 = new Jogador(parent);
@@ -52,7 +52,7 @@ ImpFase2::ImpFase2(Fmx::Types::TFmxObject* parent, System::Classes::TComponent* 
 	pColi = new GerenciadorColisao(inimigos, j1, mapa2);
 	interf = new Interface(parent);
 
-    ShowMessage((float) (clock() - timer + f) / CLOCKS_PER_SEC);
+    //ShowMessage((float) (clock() - timer + f) / CLOCKS_PER_SEC);
 	//f1->play();
     inicio = clock();
 }

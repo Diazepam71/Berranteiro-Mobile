@@ -8,6 +8,7 @@ object Form1: TForm1
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnShow = ajustar
   DesignerMasterStyle = 3
   object Button1: TButton
     Position.X = 128.000000000000000000
@@ -109,6 +110,10 @@ object Form1: TForm1
     TextSettings.Font.Size = 32.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     TextSettings.FontColor = claWhite
+  end
+  object Timer1: TTimer
+    Left = 136
+    Top = 72
   end
   object FDConnection1: TFDConnection
     Params.Strings = (

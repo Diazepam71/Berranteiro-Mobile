@@ -42,7 +42,9 @@ private:	// User declarations
 public:		// User declarations
 	__fastcall TForm4(TComponent* Owner);
 	void rolagem();
-    ImpFase3* getF3() {return f1;};
+	ImpFase3* getF3() {return f1;};
+	void setF3(ImpFase3* f03);
+	void setTimer(bool b);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm4 *Form4;

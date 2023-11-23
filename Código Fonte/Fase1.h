@@ -49,9 +49,11 @@ private:	// User declarations
 	//Interface* interf;
 public:		// User declarations
 	__fastcall TForm2(TComponent* Owner);
+    __fastcall TForm2(TComponent* Owner, ImpFase1* f1);
 	void rolagem();
 	ImpFase1* getF1() {return f1;};
-
+	void setF1(ImpFase1* f01);
+    void setTimer(bool b);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm2 *Form2;

@@ -22,6 +22,7 @@ Granada::Granada(Jogador* jo, float x, float y, Fmx::Types::TFmxObject* parent, 
 	flag = 0;
 	Owner = owner;
 	numVidas = 3;
+	qtd = 1;
 }
 
 Granada::~Granada() {}
@@ -36,10 +37,10 @@ void Granada::pegar() {
 	for (i = 1; i <= j->getl_arma()->getTam(); i -= -1) {
 		x = j->getl_arma()->getElX(i)->getInfo();
 		if (x->getNome() == "granada") {
-			x->setAmmo(x->getAmmo() + 1);
-			x->setMagvar(x->getMagvar() + 1);
+			x->setAmmo(x->getAmmo() + qtd);
+			x->setMagvar(x->getMagvar() + qtd);
 			flag = 1;
-			f->getInterface()->setInstrucao(System::UnicodeString("Pegou outra Granada."));
+			f->getInterface()->setInstrucao(System::UnicodeString("Pegou "+System::UnicodeString(qtd)+" outra(s) Granada(s)."));
 			explode = 0;
 			setVidas(0);
 			return;
@@ -52,7 +53,8 @@ void Granada::pegar() {
 	if (flag == 0) {
 		Arma* sk = new Arma("granada", Owner);
 		j->getl_arma()->incluirEl(sk);
-		f->getInterface()->setInstrucao(System::UnicodeString("Pegou uma Granada."));
+        j->getl_arma()->getElX(j->getl_arma()->getTam())->getInfo()->setAmmo(qtd);
+		f->getInterface()->setInstrucao(System::UnicodeString("Pegou "+System::UnicodeString(qtd)+" Granada(s)."));
 	}
 	explode = 0;
 	setVidas(0);
